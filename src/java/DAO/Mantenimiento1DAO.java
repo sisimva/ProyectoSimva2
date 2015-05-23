@@ -9,6 +9,7 @@ import DTO.CiudadesDto;
 import DTO.MantenimientosDto;
 import Modelo.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,19 +103,19 @@ public class Mantenimiento1DAO {
                  
         }
         catch (SQLException sqle){ 
-              
+              sqle.printStackTrace();
             }
               return listado;
          }
     
-    public ArrayList<MantenimientosDto> Historial(String fecha1,String fecha2) {
+    public ArrayList<MantenimientosDto> consultarHistorialPorFechas(Date fecha1, Date fecha2) {
         
           ArrayList<MantenimientosDto> listado=new ArrayList<MantenimientosDto>();
             try 
         {
             stmt = con.prepareStatement("select * from mantenimientos where fechaIngresoMantenimiento between ? and ?; ");
-            stmt.setString(1, fecha1);
-            stmt.setString(1, fecha2);
+            stmt.setDate(1, fecha1);
+            stmt.setDate(2, fecha2);
             rs = stmt.executeQuery();
             
             while (rs.next())
@@ -134,7 +135,7 @@ public class Mantenimiento1DAO {
                  
         }
         catch (SQLException sqle){ 
-              
+              sqle.printStackTrace();
             }
               return listado;
          }
