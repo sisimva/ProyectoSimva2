@@ -196,7 +196,7 @@
 
             $().ready(function () {
 
-                $("#editarMantenimiento").validate({//abre validete
+                $("#crearMantenimiento").validate({//abre validete
                     rules: {//abre rules
                         placa: {//abre campo
                             required: true,

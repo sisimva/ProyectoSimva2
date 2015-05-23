@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
 <%@page import="DAO.Mantenimiento1DAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTO.MantenimientosDto"%>
@@ -74,6 +76,8 @@
 <br>
 <br>
 <div id="bloqueConsulta">
+   
+    
     <label for="fechaInicio">Desde:</label>
     <input class="fecha" name="fechaInicio" id="campoFechaI"  required type="date" tabindex="1"/>
     <label for="FechaFinal">Hasta:</label>
@@ -82,7 +86,7 @@
 </div>   
 <%
     
-    
+     
     MantenimientosDto objDto = new MantenimientosDto();
     Mantenimiento1DAO objDao = new Mantenimiento1DAO ();
     
@@ -158,7 +162,7 @@
 
 		$().ready(function() {
 		
-		$("#editarMantenimiento").validate({//abre validete
+		$("#historialMantenimiento").validate({//abre validete
 		rules:{//abre rules
 			placa:{//abre campo
 				required: true,
