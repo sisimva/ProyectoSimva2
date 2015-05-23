@@ -15,7 +15,7 @@
 <body>
 
 	<div class="heading">
-    	Selecciona un Idioma / Select a Language
+    	Selecciona un Idioma / Select a Languag
     </div>
     
 <div class="content"></div>
