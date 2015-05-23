@@ -87,7 +87,7 @@
     Mantenimiento1DAO objDao = new Mantenimiento1DAO ();
     
     ArrayList<MantenimientosDto> listado = new ArrayList<MantenimientosDto>();
-    listado = objDao.Historial(request.getParameter("fechaInicio"),request.getParameter("FechaFinal"));
+    listado = objDao.consultarHistorialPorFechas(request.getParameter("fechaInicio"),request.getParameter("FechaFinal"));
 
 %>
 

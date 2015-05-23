@@ -108,14 +108,14 @@ public class Mantenimiento1DAO {
               return listado;
          }
     
-    public ArrayList<MantenimientosDto> consultarHistorialPorFechas(Date fecha1, Date fecha2) {
+    public ArrayList<MantenimientosDto> consultarHistorialPorFechas(String fecha1, String fecha2) {
         
           ArrayList<MantenimientosDto> listado=new ArrayList<MantenimientosDto>();
             try 
         {
             stmt = con.prepareStatement("select * from mantenimientos where fechaIngresoMantenimiento between ? and ?; ");
-            stmt.setDate(1, fecha1);
-            stmt.setDate(2, fecha2);
+            stmt.setString(1, fecha1);
+            stmt.setString(2, fecha2);
             rs = stmt.executeQuery();
             
             while (rs.next())
