@@ -83,8 +83,8 @@
     <!-- InstanceBeginEditable name="nav" -->
 
     <nav>
-        <a href="../asignacion.js" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
+        <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="formVehiculos.jsp" title="Registro de vehÃ­culos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
         <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
         <a href="../index-es.jsp" title="Cerrar secciÃ³n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
@@ -107,7 +107,7 @@
                 <div id="miga">
                     <br>
                     <ol class="breadcrumb">
-                        <li><a href="../Asignacion.html">Inicio</a></li>
+                        <li><a href="../Asignacion.jsp">Inicio</a></li>
                         <li class="active">Formulario Consulta de Funcionario</li>   
                     </ol>
                 </div>

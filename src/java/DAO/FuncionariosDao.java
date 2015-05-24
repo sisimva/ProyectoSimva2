@@ -101,6 +101,7 @@ public class FuncionariosDao {
                 unFuncionario.setDescripcionCategoria(rs.getString("ct.descripcionCategoria"));
                 unFuncionario.setFechaAlta(rs.getString("f.fechaAlta"));
                 unFuncionario.setEmail(rs.getString("f.eMail"));
+                unFuncionario.setfotoFuncionario(rs.getString("f.fotoFuncionario"));
                  
             }
         } catch (SQLException sqle) {
