@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,15 +33,15 @@ public class GestionVehiculos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       try (PrintWriter out = response.getWriter()) {
-           
-            String Vehi = "";
+        try (PrintWriter out = response.getWriter()) {
 
+            String Vehi = "";
+            HttpSession miSession = request.getSession();
             VehiculosDto ObjDtoVehi = new VehiculosDto();
             VehiculosDao ObjDaoVehi = new VehiculosDao();
 
             if (request.getParameter("enviar").equals("Guardar")) {
-    
+
                 ObjDtoVehi.setPlaca(request.getParameter("placa"));
                 ObjDtoVehi.setIdTiposVehiculo(Integer.parseInt(request.getParameter("tipoVehiculo")));
                 ObjDtoVehi.setIdMarcas(Integer.parseInt(request.getParameter("marcaVehiculo")));
@@ -62,27 +63,58 @@ public class GestionVehiculos extends HttpServlet {
                 ObjDtoVehi.setRevisionTecnomecanica(Integer.parseInt(request.getParameter("revisionTecnomecanica")));
                 ObjDtoVehi.setVencimientoTecnomecanica(request.getParameter("vencimientoTecnomecanica"));
                 ObjDtoVehi.setFotoVehiculo(request.getParameter("fotoVehiculo"));
-
                 Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
-
+                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
             } else if (request.getParameter("enviar").equals("Consultar")) {
-                //ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
+                ObjDtoVehi = ObjDaoVehi.ConsultarVehiculo(request.getParameter("placa"));
+                if (ObjDtoVehi != null) {
+                    miSession.setAttribute("ObjVehi", ObjDtoVehi);
+                    miSession.setAttribute("placa", request.getParameter("placa"));
+                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaVehiculo.jsp?Vehi=" + Vehi);
 
-             //   Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
+                }
 
+                //   Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
                 //response.sendRedirect("/ProyectoSimva/spanish/asignacion/listadoFuncionarios.jsp?funci="+funci);
+            }else if ((request.getParameter("enviar").equals("Consultar Otro"))) {
+                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaVehiculo.jsp?funci=" + Vehi);
+            } else if ((request.getParameter("enviar").equals("Actualizar"))) {
+                 ObjDtoVehi.setPlaca(request.getParameter("placa"));
+                ObjDtoVehi.setIdTiposVehiculo(Integer.parseInt(request.getParameter("tipoVehiculo")));
+                ObjDtoVehi.setIdMarcas(Integer.parseInt(request.getParameter("marcaVehiculo")));
+                ObjDtoVehi.setIdTiposCombustibles(Integer.parseInt(request.getParameter("tiposCombustibles")));
+                ObjDtoVehi.setModelo(Integer.parseInt(request.getParameter("modeloVehiculo")));
+                ObjDtoVehi.setIdEstadosVehiculo(Integer.parseInt(request.getParameter("estadosVehiculo")));
+                ObjDtoVehi.setFechaEstado(request.getParameter("fechaEstado"));
+                ObjDtoVehi.setIdColorVehiculo(Integer.parseInt(request.getParameter("colorVehiculo")));
+                ObjDtoVehi.setIdEmpleoVehiculo(Integer.parseInt(request.getParameter("empleoVehiculo")));
+                ObjDtoVehi.setSigla(request.getParameter("sigla"));
+                ObjDtoVehi.setVin(request.getParameter("vin"));
+                ObjDtoVehi.setMotor(request.getParameter("motor"));
+                ObjDtoVehi.setCilindraje(Integer.parseInt(request.getParameter("cilindraje")));
+                ObjDtoVehi.setLicenciaTransito(Integer.parseInt(request.getParameter("licenciaTransito")));
+                ObjDtoVehi.setSeguroObligatorio(Integer.parseInt(request.getParameter("seguroObligatorio")));
+                ObjDtoVehi.setVencimientoSeguro(request.getParameter("vencimientoSeguro"));
+                ObjDtoVehi.setSeguroResponsabilidad(Integer.parseInt(request.getParameter("seguroResponsabilidadCivil")));
+                ObjDtoVehi.setVencimientoResponsabilidad(request.getParameter("vencimientoResponsabilidad"));
+                ObjDtoVehi.setRevisionTecnomecanica(Integer.parseInt(request.getParameter("revisionTecnomecanica")));
+                ObjDtoVehi.setVencimientoTecnomecanica(request.getParameter("vencimientoTecnomecanica"));
+                ObjDtoVehi.setFotoVehiculo(request.getParameter("fotoVehiculo"));
+                 Vehi = ObjDaoVehi.ActualizarVehiculo(ObjDtoVehi);
+                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaVehiculo.jsp?Vehi=" + Vehi);
+                
+                
             }
             /*else if (request.getParameter("enviar").equals("Eliminar"))
              {
              int Pos = Integer.parseInt(request.getParameter("pos"));
              Funci = ObjDaoFunci.Eliminar(Pos);
              }*/
-             
-           response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
-            
+
+            //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
+
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

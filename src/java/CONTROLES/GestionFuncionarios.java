@@ -42,7 +42,6 @@ public class GestionFuncionarios extends HttpServlet {
             FuncionariosDao ObjDaoFunci = new FuncionariosDao();
 
             if (request.getParameter("enviar").equals("Guardar")) {
-
                 ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
                 ObjDtoFunci.setIdCiudad(Integer.parseInt(request.getParameter("ciudadDocumento")));
                 ObjDtoFunci.setIdGrados(Integer.parseInt(request.getParameter("grado")));
@@ -61,16 +60,10 @@ public class GestionFuncionarios extends HttpServlet {
                 ObjDtoFunci.setFechaAlta(request.getParameter("fechaAlta"));
                 ObjDtoFunci.setEmail(request.getParameter("email"));
                 ObjDtoFunci.setfotoFuncionario(request.getParameter("fotoFuncionario"));
-                //ObjDtoFunci.setFotoFuncionario(request.getParameter("fotoFuncionario"));
-                //ObjDtoFunci.serequest.getParameter("direccionResidencia");
-                //ObjDtoFunci.setIdCiudad(Integer.parseInt(request.getParameter("ciudadResidencia")));
-
                 funci = ObjDaoFunci.IngresarFuncionario(ObjDtoFunci);
                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionario.jsp?funci=" + funci);
-
             } else if ((request.getParameter("enviar").equals("Consultar"))) {
                 ObjDtoFunci = ObjDaoFunci.ConsultarFuncionario(Integer.parseInt(request.getParameter("numeroDocumento")));
-                // if(ObjDtoFunci.getApellido1() != null){
                 if (ObjDtoFunci != null) {
                     miSession.setAttribute("ObjFunci", ObjDtoFunci);
                     miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
@@ -82,11 +75,8 @@ public class GestionFuncionarios extends HttpServlet {
                  Funci = ObjDaoFunci.Eliminar(Pos);*/
             } else if ((request.getParameter("enviar").equals("Consultar Otro"))) {
                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
-            } else if ((request.getParameter("enviar").equals("Modificar"))) {
-                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formModificarFuncionario.jsp?funci=" + funci);
-                
             } else if ((request.getParameter("enviar").equals("Actualizar"))) {
-               ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
+                ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
                 ObjDtoFunci.setIdCiudad(Integer.parseInt(request.getParameter("ciudadDocumento")));
                 ObjDtoFunci.setIdGrados(Integer.parseInt(request.getParameter("grado")));
                 ObjDtoFunci.setApellido1(request.getParameter("apellido1"));
@@ -104,13 +94,11 @@ public class GestionFuncionarios extends HttpServlet {
                 ObjDtoFunci.setFechaAlta(request.getParameter("fechaAlta"));
                 ObjDtoFunci.setEmail(request.getParameter("email"));
                 ObjDtoFunci.setfotoFuncionario(request.getParameter("fotoFuncionario"));
-                 
-               
+
                 funci = ObjDaoFunci.ActualizarFuncionario(ObjDtoFunci);
                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
                 //RequestDispatcher Rd = request.getRequestDispatcher("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
                 //Rd.forward(request, response);
-                
 
             }
 

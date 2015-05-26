@@ -51,7 +51,7 @@
     <nav>
         <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de vehÃ­culos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
+        <a href="formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
         <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
         <a href="../index-es.html" title="Cerrar secciÃ³n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
@@ -85,7 +85,7 @@
                     <input name="numeroDocumento" id="numeroDocumento" type="text" class="inputad"  value='<%=ObjDtoFunci.getNumeroDocumento()%>' >
                     <br>
                     <label for="grado">Grado:</label>
-                    <Select name="grado" id="grados" type="text" class="listas"   tabindex="3" required="">
+                    <Select name="grado" id="grados" type="text" class="listas"  tabindex="3" required="">
                         <option value="<%= ObjDtoFunci.getIdGrados()%>" ><%=ObjDtoFunci.getDescripcionGrado()%></option>
                         <%
                             GradosDao ObjDaoGra = new GradosDao();
@@ -158,7 +158,7 @@
                     <label for="categoria">Categoria</label>
                     <select class="listas" name="categoria" id="categoria" tabindex="16" required>
                         <option value="<%=ObjDtoFunci.getIdCategoria()%>" ><%=ObjDtoFunci.getDescripcionCategoria()%></option>
-                       <%  CategoriasDao ObjDaoCate = new CategoriasDao();
+                        <%  CategoriasDao ObjDaoCate = new CategoriasDao();
                             ArrayList<CategoriasDto> listadoCategorias = new ArrayList<CategoriasDto>();
                             listadoCategorias = ObjDaoCate.ConsultarCategoriasTodas();
                             for (int a = 0; a < listadoCategorias.size(); a++) {
@@ -180,19 +180,17 @@
 
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <img src="../img/funcionario123.jpg" alt="foto" width="120" height="100">
-                        <br>
-                        <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">
-
-                        <br>
-                        <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
-
                     </div>
+                    <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">
+                    <br>
+                    <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
+                </div>
 
-                    <%
-                        if (request.getParameter("funci") != null) {
-                            out.print("<h2>" + request.getParameter("funci") + "</h2>");
-                        }
-                    %>
+                <%
+                    if (request.getParameter("funci") != null) {
+                        out.print("<h2>" + request.getParameter("funci") + "</h2>");
+                    }
+                %>
             </form>
     </section>
 </section>

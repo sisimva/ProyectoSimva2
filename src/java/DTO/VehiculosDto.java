@@ -31,6 +31,60 @@ public class VehiculosDto {
     private int revisionTecnomecanica;
     private String vencimientoTecnomecanica;
     private String fotoVehiculo;
+    private String descripcionTipoVehiculo;
+    private String descripcionMarcaVehiculo;
+    private String descripcionTipoCombustible;
+    private String descripcionEstadoVehiculo;
+    private String descripcionColorVehiculo;
+    private String descripcionEmpleoVehiculo;
+
+    public String getDescripcionEmpleoVehiculo() {
+        return descripcionEmpleoVehiculo;
+    }
+
+    public void setDescripcionEmpleoVehiculo(String descripcionEmpleoVehiculo) {
+        this.descripcionEmpleoVehiculo = descripcionEmpleoVehiculo;
+    }
+
+    public String getDescripcionColorVehiculo() {
+        return descripcionColorVehiculo;
+    }
+
+    public void setDescripcionColorVehiculo(String descripcionColorVehiculo) {
+        this.descripcionColorVehiculo = descripcionColorVehiculo;
+    }
+
+    public String getDescripcionEstadoVehiculo() {
+        return descripcionEstadoVehiculo;
+    }
+
+    public void setDescripcionEstadoVehiculo(String descripcionEstadoVehiculo) {
+        this.descripcionEstadoVehiculo = descripcionEstadoVehiculo;
+    }
+
+    public String getDescripcionTipoCombustible() {
+        return descripcionTipoCombustible;
+    }
+
+    public void setDescripcionTipoCombustible(String descripcionTipoCombustible) {
+        this.descripcionTipoCombustible = descripcionTipoCombustible;
+    }
+
+    public String getDescripcionMarcaVehiculo() {
+        return descripcionMarcaVehiculo;
+    }
+
+    public void setDescripcionMarcaVehiculo(String descripcionMarcaVehiculo) {
+        this.descripcionMarcaVehiculo = descripcionMarcaVehiculo;
+    }
+
+    public String getDescripcionTipoVehiculo() {
+        return descripcionTipoVehiculo;
+    }
+
+    public void setDescripcionTipoVehiculo(String descripcionTipoVehiculo) {
+        this.descripcionTipoVehiculo = descripcionTipoVehiculo;
+    }
 
     public VehiculosDto() {
     }
