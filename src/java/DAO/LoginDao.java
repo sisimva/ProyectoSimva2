@@ -53,7 +53,60 @@ public class LoginDao {
         } 
            return unusuarionew;     
         } 
+
+
+public String[]  Correo( long Documento){
+             String [] DatosC = new String[1];
+  
+         DatosC [0] = "No Existe";
+            try 
+        {
+            stmt = con.prepareStatement("select eMail from funcionarios where numeroDocumento=?;");
+         //   stmt = con.prepareStatement("select funcionarios.eMail, funcionariorol.usuarioLogin, funcionariorol.contraseña from funcionarios, funcionariorol where funcionarios.numeroDocumento=? and funcionariorol.numeroDocumento=?;");
+            stmt.setLong(1, Documento);
+            
+            
+            rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                DatosC [0] = rs.getString("eMail");
+
+            }
+            
+        }catch (SQLException sqle){ 
+              
+        } 
+           return DatosC;     
+        } 
+         
+         public String[]  Usuario( long Documento){
+             String [] DatosU = new String[2];
+  
+         DatosU [0] = "No Existe";
+            try 
+        {
+            stmt = con.prepareStatement("select usuarioLogin, contrasenia from funcionariorol where numeroDocumento=?;");
+         //   stmt = con.prepareStatement("select funcionarios.eMail, funcionariorol.usuarioLogin, funcionariorol.contraseña from funcionarios, funcionariorol where funcionarios.numeroDocumento=? and funcionariorol.numeroDocumento=?;");
+            stmt.setLong(1, Documento);
+           
+            
+            rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                DatosU [0] = rs.getString("usuarioLogin");
+                DatosU [1] = rs.getString("contrasenia");
+            }
+            
+        }catch (SQLException sqle){ 
+              
+        } 
+           return DatosU;     
+        } 
 }
+
+
 
          
 
