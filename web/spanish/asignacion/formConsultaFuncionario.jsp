@@ -117,6 +117,7 @@
                     <input name="numeroDocumento" id="numeroDocumento" class="inputad"  type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="" onkeydown="return validarNumeros(event)"><br><br>
                     <input class="btn btn-primary" type="submit" id="buscarDocumento" name="enviar" value="Consultar" onclick="return confirmation()"  >
                     <input type="hidden" name="numeros" onkeydown="return validarNumeros(event)"/>
+              <!--       <script type="text/javascript"> alert("Funcionario no existe")</script>  -->
                     <br>
                 </div>
             </form>
