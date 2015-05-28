@@ -44,7 +44,7 @@ public class Test1 {
      @Test
      public void ingresar() {
      
-         CiudadesDto ciudadesDto = new CiudadesDto(11,"Ludwing");
+         CiudadesDto ciudadesDto = new CiudadesDto(12,"Diego");
          Ciudades1Dao ciudadesDao = new Ciudades1Dao();
          String resultado = ciudadesDao.IngresarCiudad(ciudadesDto);
          String resultadoEsperado ="Registro ingresado exitosamente";
