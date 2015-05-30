@@ -72,7 +72,7 @@
 </div>
 
 
-<form action="../HistorialMantenimiento" id="historialMantenimiento">
+<form action="../../HistorialMantenimiento" id="historialMantenimiento">
 <br>
 <br>
 <div id="bloqueConsulta">
