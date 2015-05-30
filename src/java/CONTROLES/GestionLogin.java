@@ -91,14 +91,14 @@ public class GestionLogin extends HttpServlet {
                String Clave= DatosU[1];
                
             if(Correo.equals("No Existe")){  
-            response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=1");
+            response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=1");
             
             }else if(Usuario.equals("No Existe")) {
-                    response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=2");                                    
+                    response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=2");                                    
                 }else{
                 String Mensaje = "El sistema Simva le recuerda su nombre de usuario = "+Usuario+"  con la clave correspondiente = "+Clave;
                     //Mailer.send(Correo, "Nueva Contrasena", Mensaje);
-                    response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=3&correo="+Correo);                     
+                    response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=3&correo="+Correo);                     
                 }           
             }
         }

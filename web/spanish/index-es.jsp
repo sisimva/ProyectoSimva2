@@ -41,8 +41,7 @@
 
     <form id="login-form" name="login-form" class="login-form" action="/ProyectoSimva/GestionLogin" method="post" >
     
-     <div class="logo">
-      </div>
+     <div class="logo"> </div>
     <div class="header">
   
         <h1>SIMVA</h1>
@@ -54,7 +53,7 @@
         <input name="clave" type="password" id="clave" class="input password" placeholder="Password*" required tabindex="2">
     </div>
 
-    <div id="temp">
+    <div id="temp"> 
 
                 
     </div>
