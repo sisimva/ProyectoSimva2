@@ -29,7 +29,7 @@ public class Mantenimiento1DAO {
         String rta = "";
         try {
             stmt = con.prepareStatement("INSERT INTO Mantenimientos VALUES(?, ?, ?, ?, ?, ?, ?, ?);");
-            
+
             stmt.setInt(1, mantenimiento.getIdMantenimientos());
             stmt.setString(2, mantenimiento.getPlaca());
             stmt.setInt(3, mantenimiento.getIdTipoMantenimiento());
@@ -38,10 +38,9 @@ public class Mantenimiento1DAO {
             stmt.setString(6, mantenimiento.getFechaProximoMantenimiento());
             stmt.setString(7, mantenimiento.getObservaciones());
             stmt.setInt(8, mantenimiento.getCcMantenimiento());
-            
-            
+
             int resultado = stmt.executeUpdate();
-            
+
             if (resultado == 0) {
                 //resul=false;
                 rta = "Fallo el ingreso del registro";
@@ -76,21 +75,17 @@ public class Mantenimiento1DAO {
 
         return ultimoValor;
     }
-    
-    
+
     public ArrayList<MantenimientosDto> historialMantenimientos() {
-        
-          ArrayList<MantenimientosDto> listado=new ArrayList<MantenimientosDto>();
-            try 
-        {
+
+        ArrayList<MantenimientosDto> listado = new ArrayList<MantenimientosDto>();
+        try {
             stmt = con.prepareStatement("SELECT * FROM mantenimientos ");
             rs = stmt.executeQuery();
-            
-            while (rs.next())
-                
-            {
-                MantenimientosDto newMantenimiento =new MantenimientosDto();
-                
+
+            while (rs.next()) {
+                MantenimientosDto newMantenimiento = new MantenimientosDto();
+
                 newMantenimiento.setIdMantenimientos(rs.getInt("idMantenimiento"));
                 newMantenimiento.setPlaca(rs.getString("placa"));
                 newMantenimiento.setIdTipoMantenimiento(rs.getInt("estado"));
@@ -100,29 +95,25 @@ public class Mantenimiento1DAO {
                 newMantenimiento.setObservaciones(rs.getString("observaciones"));
                 listado.add(newMantenimiento);
             }
-                 
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
         }
-        catch (SQLException sqle){ 
-              sqle.printStackTrace();
-            }
-              return listado;
-         }
-    
-    public ArrayList<MantenimientosDto> consultarHistorialPorFechas(String fecha1, String fecha2) {
-        
-          ArrayList<MantenimientosDto> listado=new ArrayList<MantenimientosDto>();
-            try 
-        {
+        return listado;
+    }
+
+    public ArrayList<MantenimientosDto> consultarHistorialPorFechas(Date fecha1, Date fecha2) {
+
+        ArrayList<MantenimientosDto> listado = new ArrayList<MantenimientosDto>();
+        try {
             stmt = con.prepareStatement("select * from mantenimientos where fechaIngresoMantenimiento between ? and ?; ");
-            stmt.setString(1, fecha1);
-            stmt.setString(2, fecha2);
+            stmt.setDate(1, fecha1);
+            stmt.setDate(2, fecha2);
             rs = stmt.executeQuery();
-            
-            while (rs.next())
-                
-            {
-                MantenimientosDto newMantenimiento =new MantenimientosDto();
-                
+
+            while (rs.next()) {
+                MantenimientosDto newMantenimiento = new MantenimientosDto();
+
                 newMantenimiento.setIdMantenimientos(rs.getInt("idMantenimiento"));
                 newMantenimiento.setPlaca(rs.getString("placa"));
                 newMantenimiento.setIdTipoMantenimiento(rs.getInt("estado"));
@@ -132,11 +123,10 @@ public class Mantenimiento1DAO {
                 newMantenimiento.setObservaciones(rs.getString("observaciones"));
                 listado.add(newMantenimiento);
             }
-                 
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
         }
-        catch (SQLException sqle){ 
-              sqle.printStackTrace();
-            }
-              return listado;
-         }
+        return listado;
+    }
 }
