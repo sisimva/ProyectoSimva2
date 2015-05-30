@@ -39,32 +39,33 @@
     <div class="pass-icon"></div>
  
 
-    <form id="login-form" name="login-form" class="login-form" action="../GestionLogin" method="post" >
+    <form id="login-form" name="login-form" class="login-form" action="/ProyectoSimva/GestionLogin" method="post" >
     
-     <div class="logo">
-      </div>
+     <div class="logo"> </div>
     <div class="header">
-
+  
         <h1>SIMVA</h1>
         <span>Digita los datos correspondientes</span>
     </div>
   
     <div class="content">
-    	<input name="usuario" type="text" id="usuario" class="input username" placeholder="Username*" required tabindex="1">
+    	<input name="usuario" type="text" id="usuario" class="input username" placeholder="Username*" required autofocus tabindex="1">
         <input name="clave" type="password" id="clave" class="input password" placeholder="Password*" required tabindex="2">
     </div>
 
-    <div id="temp">
+    <div id="temp"> 
 
                 
     </div>
 
     <div class="footer">
-        <input type="submit" name="Boton" value="Login" class="button" >
+       
+        <input type="submit" name="Boton" value="Ingresar" class="button" >
+        
     </div>
         
 </form>
-<a id="olvCon" href="">Si olvido la contraseña por favor comuniquese con el Admisnitrador del sistema.</a>
+<a id="olvCon" href="recuperar.jsp">Si olvido la contraseña por favor comuniquese con el Admisnitrador del sistema.</a>
 </div>
 
     <div class="gradient"></div>
@@ -117,20 +118,7 @@
             $(".password").blur(function() {
                 $(".pass-icon").css("left","0px");
             });
-        });
-
-            function redireccion(){
-                if(document.getElementById("admin").checked){
-                    document.getElementById("login-form").action="administrador.jsp";
-                }
-                if(document.getElementById("asig").checked){
-                    document.getElementById("login-form").action="asignacion.jsp";
-                }
-                if(document.getElementById("mant").checked){
-                    document.getElementById("login-form").action="mantenimiento.jsp";
-                }
-            }
-            
+        });          
     </script>
 
     <%

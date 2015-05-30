@@ -1,22 +1,9 @@
 <%-- 
     Document   : formConsultaVehiculos
     Created on : 18-Abr-2015, 19:24:41
-    @author Jairo
+    @author Jairo Medina
 --%>
 <%@page import="DTO.VehiculosDto"%>
-<%@page import="DAO.ConsultarFuncionarioDao"%>
-<%@page import="DAO.FuncionariosDao"%>
-<%@page import="DTO.CategoriasDto"%>
-<%@page import="DAO.CategoriasDao"%>
-<%@page import="DTO.RhDto"%>
-<%@page import="DAO.RhDao"%>
-<%@page import="DTO.GradosDto"%>
-<%@page import="DAO.GradosDao"%>
-<%@page import="DTO.CiudadesDto"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="DAO.CiudadesDao"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="DTO.FuncionariosDto"%>
 <html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         <meta charset="utf-8">
@@ -56,11 +43,11 @@
     <!-- InstanceBeginEditable name="nav" -->
 
     <nav>
-        <a href="../asignacion.html" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de veh铆culos"><span class="fa fa-car fa-1x"> Registro de veh韈ulos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
-        <a href="../index-es.html" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="formConsultaVehiculos.jsp" title="Consulta de veh韈ulos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
+        <a href="formConsultaAsignacion.jsp" title="Consultar asignaci髇"><span class="fa fa-check-square-o fa-1x"> Consultar asignaci髇</a>
+        <a href="../index-es.jsp" title="Cerrar sesi髇"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 
@@ -72,55 +59,56 @@
             VehiculosDto ObjDtoVehi = new VehiculosDto();
             ObjDtoVehi = (VehiculosDto) miSession.getAttribute("ObjVehi");
         %>  
+    <section>
+        <div id="area">
+            <div id="miga">
+                <br>
+                <ol class="breadcrumb">
+                    <li><a href="../Asignacion.jsp">Inicio</a></li>
+                    <li class="active">Formulario Consulta de Veh韈ulo</li>   
+                </ol>
+            </div>
 
+            <form class="formularioConsultaVehiculos" method="post" action="../../GestionVehiculos">
+                <h3>Formulario Consulta de Veh韈ulo</h3>
 
-        <section>
-            <div id="area">
-
-                <div id="miga">
+                <div class="cajas" id="cajaUno">  
+                    <label for="placa">Digite la placa del veh韈ulo:</label>
+                    <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y n鷐eros"><br><br>
+                    <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
                     <br>
-                    <ol class="breadcrumb">
-                        <li><a href="../Asignacion.html">Inicio</a></li>
-                        <li class="active">Formulario Consulta de Veh韈ulo</li>   
-                    </ol>
                 </div>
+            </form>
+            <%
+                if (request.getParameter("Vehi") != null) {
+                    out.print("<h2>" + request.getParameter("Vehi") + "</h2>");
+                }
+            %>
+    </section>
+    <script>
+        $().ready(function () {
+            $(".formularioConsultaVehiculos").validate({
+                rules: {
+                    placa: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 6
+                    }
+                },
+                messages: {
+                    placa: {
+                        required: "Campo requerido",
+                        minlength: "Minimo {0} caracteres",
+                        maxlength: "Maximo {0} caracteres"
+                    }
+                } // Cierre de los mensajes
+            }); // Cierre de la funci贸n validate
+        }); // Cierre de la funci贸n ready
 
-                <form class="formularioConsultaVehiculos" method="post" action="../../GestionVehiculos">
-                    <h3>Formulario Consulta de Veh韈ulo</h3>
+    </script>
+    <!-- InstanceEndEditable -->
 
-                    <div class="cajas" id="cajaUno">  
-
-                        <label for="placa">Digite la placa del veh韈ulo:</label>
-                        <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y n鷐eros"><br><br>
-                        <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
-                        <br>
-                    </div>
-                </form>
-        </section>
-        <script>
-            $().ready(function () {
-                $(".formularioConsultaVehiculos").validate({
-                    rules: {
-                        placa: {
-                            required: true,
-                            minlength: 5,
-                            maxlength: 10
-                        }
-                    },
-                    messages: {
-                        placa: {
-                            required: "Campo requerido",
-                            minlength: "Minimo {0} caracteres",
-                            maxlength: "Maximo {0} caracteres"
-                        }
-                    } // Cierre de los mensajes
-                }); // Cierre de la funci贸n validate
-            }); // Cierre de la funci贸n ready
-
-        </script>
-        <!-- InstanceEndEditable -->
-
-        <div id="espacio3"></div>
+    <div id="espacio3"></div>
 
     <foot>
         <div class="pie">Versi贸n 5.0 | COPYRIGHT   &copy;2014 SIMVA | Cont谩ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 

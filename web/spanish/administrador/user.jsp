@@ -296,7 +296,6 @@
                                 <input class="btn btn-info" id="botbusc" type="submit" name="boton" onclick="return confirmation()" value="Buscar">
                                       
                         <script type="text/javascript"> alert("Funcionario no existe")</script>
-                        
                 
                                 <%                         
                                 }                   

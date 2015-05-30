@@ -50,7 +50,7 @@
     <!-- InstanceBeginEditable name="nav" -->
 
     <nav>
-        <a href="../asignacion.html" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
+        <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
         <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
         <a href="formVehiculos.jsp" title="Registro de vehÃ­culos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
         <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
@@ -70,7 +70,7 @@
                 <div id="miga">
                     <br>
                     <ol class="breadcrumb">
-                        <li><a href="../Asignacion.html">Inicio</a></li>
+                        <li><a href="../Asignacion.jsp">Inicio</a></li>
                         <li class="active">Formulario Registro de Funcionario</li>   
                     </ol>
                 </div>
@@ -79,10 +79,10 @@
                     <div class="cajas" id="cajaUno">  
                         <label for="numeroDocumento">Cedula:</label>
                         <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10">
-                        <br><br><br>
+                        <br>
                         <label for="grado">Grado:</label>
                         <Select name="grado" class="listas" id="grados" tabindex="3" required>
-                            <option disabled>Seleccione el grado</option>
+                            <option selected disabled>Seleccione el grado</option>
                             <%
                                 GradosDao ObjDaoGra = new GradosDao();
                                 ArrayList<GradosDto> listadoGrados = new ArrayList<GradosDto>();
@@ -110,8 +110,8 @@
                         <input class="fechas" name="campoFechaNacimiento" id="campoFechaNacimiento" type="date" tabindex="8" maxlength="10">
                         <br>
                         <label for="campoRh">RH</label>
-                        <select name="idRh" class="listas"  id="idRh" tabindex="9" maxlength="10">
-                            <option >Seleccione un Rh</option>
+                        <select name="idRh" class="listas"  id="idRh" tabindex="9" maxlength="10"  required>
+                            <option selected disabled>Seleccione un Rh</option>
                             <%  RhDao ObjDaoRh = new RhDao();
                                 ArrayList<RhDto> listadoRh = new ArrayList<RhDto>();
                                 listadoRh = ObjDaoRh.ConsultarRhTodos();
@@ -129,7 +129,7 @@
                     <div class="cajas" id="cajados">
                         <label for="ciudadDocumento">De:</label>
                         <select name="ciudadDocumento" class="listas"  id="ciudadDocumento" tabindex="2" required>
-                            <option disabled>Seleccione una ciudad</option>
+                            <option selected disabled>Seleccione una ciudad</option>
                             <%  CiudadesDao ObjDaoC = new CiudadesDao();
                                 ArrayList<CiudadesDto> listado = new ArrayList<CiudadesDto>();
                                 listado = ObjDaoC.ConsultarCiudadesTodas();
@@ -139,7 +139,7 @@
                                 <%= listado.get(a).getNombreCiudad()%></option>
                                 <%}%>
                         </select>
-                        <br><br><br>
+                        <br>
                         <label for="telefono">Telefono:</label>
                         <input name="telefono" id="telefono" type="text" placeholder= "Ej. 7581429" tabindex="12" required minlength="7"maxlength="10">
                         <br>
@@ -154,7 +154,7 @@
                         <br>
                         <label for="categoria">Categoria</label>
                         <select class="listas" name="categoria" id="categoria" tabindex="16" required>
-                            <option disabled>Seleccione</option>
+                            <option selected disabled>Seleccione</option>
                             <%  CategoriasDao ObjDaoCate = new CategoriasDao();
                                 ArrayList<CategoriasDto> listadoCategorias = new ArrayList<CategoriasDto>();
                                 listadoCategorias = ObjDaoCate.ConsultarCategoriasTodas();
@@ -263,6 +263,9 @@
                         email: true
                     },
                     fechaAlta: {
+                       idRh
+                    },
+                    idRh:{
                         required: true
                     }
                 },
@@ -335,6 +338,9 @@
                     },
                     fechaAlta: {
                         required: "Campo requerido"
+                    },
+                    idRh:{
+                        required: true
                     }
                 } // Cierre de los mensajes
             }); // Cierre de la funciÃ³n validate

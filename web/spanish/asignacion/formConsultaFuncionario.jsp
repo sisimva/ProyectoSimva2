@@ -83,78 +83,81 @@
     <!-- InstanceBeginEditable name="nav" -->
 
     <nav>
-        <a href="../asignacion.js" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de veh铆culos"><span class="fa fa-car fa-1x"> Registro de veh韈ulos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
-        <a href="../index-es.jsp" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="formConsultaVehiculo.jsp" title="Consulta de veh韈ulos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
+        <a href="formAsignacion.jsp" title="Realizar asignaci髇"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
+        <a href="../index-es.jsp" title="Cerrar secci髇"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 
     <div id="espacio2"></div>
     <!-- InstanceBeginEditable name="Body" -->
     <body>
-  <%
+        <%
             HttpSession miSession = request.getSession();
             FuncionariosDto ObjDtoFunci = new FuncionariosDto();
             ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
         %>  
+    <section>
+        <div id="area">
+            <div id="miga">
+                <br>
+                <ol class="breadcrumb">
+                    <li><a href="../Asignacion.jsp">Inicio</a></li>
+                    <li class="active">Formulario Consulta de Funcionario</li>   
+                </ol>
+            </div>
 
+            <form class="formularioConsultaFuncionario" method="post" action="../../GestionFuncionarios">
+                <h3>Formulario Consulta de Funcionario</h3>
 
-        <section>
-            <div id="area">
-
-                <div id="miga">
+                <div class="cajas" id="cajaUno">  
+                    <label for="numeroDocumento">Digite el N鷐ero de C閐ula:</label>
+                    <input name="numeroDocumento" id="numeroDocumento" class="inputad"  type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="" onkeydown="return validarNumeros(event)"><br><br>
+                    <input class="btn btn-primary" type="submit" id="buscarDocumento" name="enviar" value="Consultar" onclick="return confirmation()"  >
+                    <input type="hidden" name="numeros" onkeydown="return validarNumeros(event)"/>
+              <!--       <script type="text/javascript"> alert("Funcionario no existe")</script>  -->
                     <br>
-                    <ol class="breadcrumb">
-                        <li><a href="../Asignacion.html">Inicio</a></li>
-                        <li class="active">Formulario Consulta de Funcionario</li>   
-                    </ol>
                 </div>
+            </form>
+            <%
+                if (request.getParameter("funci") != null) {
+                    out.print("<h2>" + request.getParameter("funci") + "</h2>");
+                }
+            %>
+    </section>
+</body>
+<script>
+    $().ready(function () {
+        $(".formularioConsultaFuncionario").validate({
+            rules: {
+                numeroDocumento: {
+                    required: true,
+                    digits: true,
+                    minlength: 5,
+                    maxlength: 10
+                }
+            },
+            messages: {
+                numeroDocumento: {
+                    required: "Campo requerido",
+                    digits: "Por favor digite solo numeros",
+                    minlength: "M铆nimo {0} caracteres"
+                }
+            } // Cierre de los mensajes
+        }); // Cierre de la funci贸n validate
+    }); // Cierre de la funci贸n ready
 
-                <form class="formularioConsultaFuncionario" method="post" action="../../GestionFuncionarios">
-                    <h3>Formulario Consulta de Funcionario</h3>
+</script>
+<!-- InstanceEndEditable -->
 
-                    <div class="cajas" id="cajaUno">  
+<div id="espacio3"></div>
 
-                        <label for="numeroDocumento">Digite el N鷐ero de C閐ula:</label>
-                        <input name="numeroDocumento" id="numeroDocumento" class="inputad"  type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="" onkeydown="return validarNumeros(event)"><br><br>
-                        <input class="btn btn-primary" type="submit" id="buscarDocumento" name="enviar" value="Consultar" onclick="return confirmation()"  >
-                       <input type="hidden" name="numeros" onkeydown="return validarNumeros(event)"/>
-                        <br>
-                    </div>
-                </form>
-                        </section>
-                        <script>
-                            $().ready(function () {
-                                $(".formularioConsultaFuncionario").validate({
-                                    rules: {
-                                        numeroDocumento: {
-                                            required: true,
-                                            digits: true,
-                                            minlength: 5,
-                                            maxlength: 10
-                                        }
-                                    },
-                                    messages: {
-                                        numeroDocumento: {
-                                            required: "Campo requerido",
-                                            digits: "Por favor digite solo numeros",
-                                            minlength: "M铆nimo {0} caracteres"
-                                        }
-                                    } // Cierre de los mensajes
-                                }); // Cierre de la funci贸n validate
-                            }); // Cierre de la funci贸n ready
+<foot>
+    <div class="pie">Versi贸n 5.0 | COPYRIGHT   &copy;2014 SIMVA | Cont谩ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+</foot>
 
-                        </script>
-                        <!-- InstanceEndEditable -->
+<div id="espacio4"></div>
 
-                        <div id="espacio3"></div>
-
-                        <foot>
-                            <div class="pie">Versi贸n 5.0 | COPYRIGHT   &copy;2014 SIMVA | Cont谩ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
-                        </foot>
-
-                        <div id="espacio4"></div>
-
-                        <!-- InstanceEnd --></html>
+<!-- InstanceEnd --></html>

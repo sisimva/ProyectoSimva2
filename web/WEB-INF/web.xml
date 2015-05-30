@@ -12,6 +12,11 @@
         <servlet-name>ControlUsuarios</servlet-name>
         <servlet-class>CONTROLES.ControlUsuarios</servlet-class>
     </servlet>
+    <servlet>
+        <description>Lo adicione el 24Mayo2015 12:43H</description>
+        <servlet-name>GestionVehiculos</servlet-name>
+        <servlet-class>CONTROLES.GestionVehiculos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GestionFuncionarios</servlet-name>
         <url-pattern>/GestionFuncionarios</url-pattern>
@@ -23,6 +28,10 @@
     <servlet-mapping>
         <servlet-name>ControlUsuarios</servlet-name>
         <url-pattern>/ControlUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionVehiculos</servlet-name>
+        <url-pattern>/GestionVehiculos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

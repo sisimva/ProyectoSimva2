@@ -1,13 +1,11 @@
 package DAO;
 
-import DTO.CiudadesDto;
 import DTO.FuncionariosDto;
 import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -27,8 +25,6 @@ public class FuncionariosDao {
                     + "idRh, telefono, movil, indicativo, licenciaConduccion,"
                     + "vencimientoLicencia, idCategoria, fechaAlta, eMail,fotoFuncionario) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            //+ "VALUES(?,?,?,?,null,?,null,null,?,?,?,null,null,null,null,?,null,null)");
-            //("call spInsertarFuncionarioPrueba");
             stmt.setInt(1, ingFunci.getNumeroDocumento());
             stmt.setInt(2, ingFunci.getIdCiudad());
             stmt.setInt(3, ingFunci.getIdGrados());
@@ -47,7 +43,6 @@ public class FuncionariosDao {
             stmt.setString(16, ingFunci.getFechaAlta());
             stmt.setString(17, ingFunci.getEmail());
             stmt.setString(18, ingFunci.getfotoFuncionario());
-
             int resultado = stmt.executeUpdate();
             if (resultado == 0) {
                 rta = "Fallo el ingreso del funcionario";
@@ -58,9 +53,17 @@ public class FuncionariosDao {
             }
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
-        }
-        return rta;
+        } /*finally {
+         if (con != null) {
+         try {
+         con.close();
+         } catch (SQLException e) {
+         e.printStackTrace();
+         }
+         }
+         }*/
 
+        return rta;
     }
 
     public FuncionariosDto ConsultarFuncionario(int cedula) {
@@ -78,10 +81,10 @@ public class FuncionariosDao {
                     + "JOIN categorias ct ON (f.idCategoria = ct.idCategoria) "
                     + "WHERE numeroDocumento = ?;");
             stmt.setInt(1, cedula);
-           rs = stmt.executeQuery();// estaba al inicio de este bl;oque domingo 17052015 22:17
+            rs = stmt.executeQuery();// estaba al inicio de este bl;oque domingo 17052015 22:17
             while (rs.next()) {
                 unFuncionario.setNumeroDocumento(rs.getInt("f.numeroDocumento"));
-                 unFuncionario.setIdCiudad(rs.getInt("idCiudad"));
+                unFuncionario.setIdCiudad(rs.getInt("idCiudad"));
                 unFuncionario.setNombreCiudad(rs.getString("c.nombreCiudad"));
                 unFuncionario.setIdGrados(rs.getInt("idGrados"));
                 unFuncionario.setDescripcionGrado(rs.getString("g.descripcionGrado"));
@@ -101,8 +104,8 @@ public class FuncionariosDao {
                 unFuncionario.setDescripcionCategoria(rs.getString("ct.descripcionCategoria"));
                 unFuncionario.setFechaAlta(rs.getString("f.fechaAlta"));
                 unFuncionario.setEmail(rs.getString("f.eMail"));
-                 
-            }
+                unFuncionario.setfotoFuncionario(rs.getString("f.fotoFuncionario"));
+            } 
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
         }/* finally {
@@ -118,16 +121,15 @@ public class FuncionariosDao {
         return unFuncionario;
 
     }
-   public String ActualizarFuncionario(FuncionariosDto actuFunci) {
+
+    public String ActualizarFuncionario(FuncionariosDto actuFunci) {
         String rta = "";
-        int resultado=0;
+        int resultado = 0;
         try {
-          stmt = con.prepareStatement("UPDATE funcionarios SET  idCiudad=?, "
+            stmt = con.prepareStatement("UPDATE funcionarios SET  idCiudad=?, "
                     + "idGrados=?, apellido1=?, apellido2=?, nombre1=?, nombre2=?, fechaNacimiento=?, "
                     + "idRh=?, telefono=?, movil=?, indicativo=?, licenciaConduccion=?,"
                     + "vencimientoLicencia=?, idCategoria=?, fechaAlta=?, eMail=?,fotoFuncionario=? WHERE numeroDocumento=?;");
-
-           
             stmt.setInt(1, actuFunci.getIdCiudad());
             stmt.setInt(2, actuFunci.getIdGrados());
             stmt.setString(3, actuFunci.getApellido1());
@@ -145,25 +147,27 @@ public class FuncionariosDao {
             stmt.setString(15, actuFunci.getFechaAlta());
             stmt.setString(16, actuFunci.getEmail());
             stmt.setString(17, actuFunci.getfotoFuncionario());
-            stmt.setInt(18, actuFunci.getNumeroDocumento()); 
-            
-//            stmt = con.prepareStatement("UPDATE funcionarios SET  numeroDocumento ='"+actuFunci.getNumeroDocumento()+"', idCiudad='"+actuFunci.getIdCiudad()+"', "
-//                    + "idGrados='"+actuFunci.getIdGrados()+"', apellido1='"+actuFunci.getApellido1()+"', apellido2='"+actuFunci.getNombre1()+"', nombre1='"+actuFunci.getNombre1()+"', nombre2='"+actuFunci.getNombre2()+"', fechaNacimiento='"+actuFunci.getFechaNacimiento()+"' "
-//                    + "idRh='"+actuFunci.getIdRh()+"', telefono='"+actuFunci.getTelefono()+"', movil='"+actuFunci.getMovil()+"', indicativo='"+actuFunci.getIndicativo()+"', licenciaConduccion='"+actuFunci.getLicenciaConduccion()+"',"
-//                    + "vencimientoLicencia='"+actuFunci.getVencimientoLicencia()+"', idCategoria='"+actuFunci.getIdCategoria()+"', fechaAlta='"+actuFunci.getFechaAlta()+"', eMail='"+actuFunci.getEmail()+"',fotoFuncionario='"+actuFunci.getfotoFuncionario()+"' WHERE numeroDocumento='"+actuFunci.getNumeroDocumento()+"';");
-
+            stmt.setInt(18, actuFunci.getNumeroDocumento());
             resultado = stmt.executeUpdate();
             if (resultado == 0) {
-
                 rta = "Fallo al actualizar el funcionario";
-               // System.out.println("Fallo al actualizar el funcionario");
+                //System.out.println("Fallo al actualizar el funcionario");
             } else {
                 rta = "Funcionario actualizado exitosamente";
-               // System.out.println("Funcionario actualizado exitosamente");
+                //System.out.println("Funcionario actualizado exitosamente");
             }
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
-        }
+        }/*finally {
+         if (con != null) {
+         try {
+         con.close();
+         } catch (SQLException e) {
+         e.printStackTrace();
+         }
+         }
+         }*/
+
         return rta;
     }
 }

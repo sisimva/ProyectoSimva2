@@ -53,8 +53,8 @@
     	
     <nav>
         <a href="asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="asignacion/formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="asignacion/formVehiculo.jsp" title="Registro de vehículos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
+        <a href="asignacion/formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="asignacion/formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
         <a href="asignacion/formAsignacion.jsp" title="Realizar asignación"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a> 
         <a href="index-es.jsp" title="Cerrar sección"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
@@ -83,8 +83,8 @@
                             <div class="ch-info">
                                 <div class="ch-info-front ch-img-1"></div>
                                 <div class="ch-info-back">
-                                    <h3>Registro de<br>Funcionarios</h3>
-                                    <p><a href="asignacion/formFuncionario.jsp"></a></p>
+                                    <h3>Consulta de<br>Funcionarios</h3>
+                                    <p><a href="asignacion/formConsultaFuncionario.jsp"></a></p>
                                 </div>  
                             </div>
                         </div>
@@ -94,8 +94,8 @@
                             <div class="ch-info">
                                 <div class="ch-info-front ch-img-2"></div>
                                 <div class="ch-info-back">
-                                    <h3>Registro de<br>Vehículo</h3>
-                                    <p>  <a href="asignacion/formVehiculos.jsp"></a></p>
+                                    <h3>Consulta de<br>Vehículos</h3>
+                                    <p>  <a href="asignacion/formConsultaVehiculo.jsp"></a></p>
                                 </div>
                             </div>
                         </div>

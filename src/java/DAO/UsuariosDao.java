@@ -33,7 +33,7 @@ public class UsuariosDao {
        String rta="";
         try 
         {   
-            stmt = con.prepareStatement("INSERT INTO  funcionariorol (idRol, numeroDocumento, usuarioLogin, contraseña, fechaCreacion )  VALUES(?,?,?,?,?);");
+            stmt = con.prepareStatement("INSERT INTO  funcionariorol (idRol, numeroDocumento, usuarioLogin, contrasenia, fechaCreacion )  VALUES(?,?,?,?,?);");
             stmt.setInt(1,inusu.getIdRol());
             stmt.setInt(2,inusu.getNumeroDocumento());
             stmt.setString(3,inusu.getUsuarioLogin());
@@ -91,7 +91,7 @@ public class UsuariosDao {
                 unaliadonew.setIdRol(rs.getInt("idRol"));
                 unaliadonew.setNumeroDocumento(rs.getInt("numeroDocumento"));
                 unaliadonew.setUsuarioLogin(rs.getString("usuarioLogin"));
-                unaliadonew.setContraseña(rs.getString("contraseña"));
+                unaliadonew.setContraseña(rs.getString("contrasenia"));
                 unaliadonew.setFechaCreacion(rs.getString("fechaCreacion"));
                 
                 listado.add(unaliadonew);
@@ -140,7 +140,7 @@ public class UsuariosDao {
        String rta="";
         try 
         {
-            stmt = con.prepareStatement("UPDATE funcionariorol SET  idRol=?, usuarioLogin=?, contraseña=?,  fechaCreacion=?  WHERE  numeroDocumento=?;");
+            stmt = con.prepareStatement("UPDATE funcionariorol SET  idRol=?, usuarioLogin=?, contrasenia=?,  fechaCreacion=?  WHERE  numeroDocumento=?;");
             
             
             stmt.setInt(1,re1.getIdRol());
@@ -191,7 +191,7 @@ public FuncionarioRolDto ConsultarUno(int Documento) {
                 unaliadonew.setIdRol(rs.getInt("idRol"));
                 unaliadonew.setNumeroDocumento(rs.getInt("numeroDocumento"));
                 unaliadonew.setUsuarioLogin(rs.getString("usuarioLogin"));
-                unaliadonew.setContraseña(rs.getString("contraseña"));
+                unaliadonew.setContraseña(rs.getString("contrasenia"));
                 unaliadonew.setFechaCreacion(rs.getString("fechaCreacion"));               
                 
                             }

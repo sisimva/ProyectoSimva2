@@ -66,7 +66,7 @@ public class FuncionarioDao {
       
         try 
         {
-            stmt = con.prepareStatement("SELECT idFuncionarioRol, idRol, numeroDocumento, usuarioLogin, contraseña , fechaCreacion from funcionariorol;");
+            stmt = con.prepareStatement("SELECT idFuncionarioRol, idRol, numeroDocumento, usuarioLogin, contrasenia , fechaCreacion from funcionariorol;");
             rs = stmt.executeQuery();
             
                
@@ -79,7 +79,7 @@ public class FuncionarioDao {
                 unusuarionew.setIdRol(rs.getInt("idRol"));
                 unusuarionew.setNumeroDocumento(rs.getInt("numeroDocumento"));
                 unusuarionew.setUsuarioLogin(rs.getString("usuarioLogin"));
-                unusuarionew.setContraseña(rs.getString("contraseña"));
+                unusuarionew.setContraseña(rs.getString("contrasenia"));
                 unusuarionew.setFechaCreacion(rs.getString("fechaCreacion"));
                 listado.add(unusuarionew);
             }
