@@ -72,7 +72,7 @@
 </div>
 
 
-<form action="../../HistorialMantenimiento" id="historialMantenimiento">
+<form action="../../HistorialMantenimiento" method="POST" id="historialMantenimiento">
 <br>
 <br>
 <div id="bloqueConsulta">
@@ -82,7 +82,7 @@
     <input class="fecha" name="fechaInicio" id="campoFechaI"  required type="date" tabindex="1"/>
     <label for="FechaFinal">Hasta:</label>
     <input class="fecha" name="FechaFinal" id="campoFechaI"  required type="date" tabindex="2"/>
-    <button class="btn  btn-primary" id="botonConsulta" type="submit" name="btn" tabindex="3" value="Consultar">Consultar</button>
+    <button class="btn  btn-primary" id="botonConsulta" type="submit" name="btn" tabindex="3" value="HistorialMantenimiento">Consultar</button>
 </div>   
 <%
     
