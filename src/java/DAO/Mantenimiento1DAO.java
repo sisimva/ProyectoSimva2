@@ -6,6 +6,7 @@
 package DAO;
 
 import DTO.CiudadesDto;
+import DTO.FuncionarioRolDto;
 import DTO.MantenimientosDto;
 import Modelo.Conexion;
 import java.sql.Connection;
@@ -139,4 +140,70 @@ public class Mantenimiento1DAO {
             }
               return listado;
          }
+     
+    public String EliminarMantenimiento (String placa)
+    {
+      
+       String rta="";
+        try 
+        {
+            stmt = con.prepareStatement("DELETE FROM mantenimientos WHERE placa = ?");
+            stmt.setString(1,placa);
+            
+            
+                int resultado = stmt.executeUpdate();
+                    if(resultado==0)
+                    {
+                        //resul=false;
+                        rta="Fallo al eliminar";
+                    }
+                    else
+                        {
+                         rta="Registro eliminado Exitosamente";
+                        }   
+        }
+        catch (SQLException sqle) 
+            { 
+                rta=sqle.getMessage();
+            } 
+        
+    
+    return rta;
+    }
+ public String ActualizarMantenimiento(MantenimientosDto man)
+       
+    {
+       //boolean resul = false;
+       String rta="";
+        try 
+        {
+            stmt = con.prepareStatement("UPDATE mantenimientos SET  idMantenimeintos=?, placa=?, idTipoMantenimiento=?,  fechaIngresoMantenimiento=?, fechaSalidaMantenimiento=?, fechaProximoMantenimiento=?, observaciones=?, CcMantenimeintos=?  WHERE  placa=?;");
+            
+            
+            stmt.setInt(1,man.getIdMantenimientos());
+            stmt.setString(2,man.getPlaca());
+            stmt.setInt(3,man.getIdMantenimientos());
+            stmt.setString(4,man.getFechaIngresoMantenimiento());
+            stmt.setString(5,man.getFechaSalidaMantenimiento());
+            stmt.setString(5,man.getFechaProximoMantenimiento());
+            stmt.setString(5,man.getObservaciones());
+            stmt.setInt(5,man.getCcMantenimiento());
+
+             int resultado = stmt.executeUpdate();
+                    if(resultado==0)
+                    {
+                        
+                        rta="Fallo al actualizar";
+                    }
+                    else
+                        {
+                         rta="Registro actualizado Exitosamente";
+                        }   
+        }
+        catch (SQLException sqle) 
+            { 
+                rta=sqle.getMessage();
+            }
+    return rta;
+    }
 }
