@@ -9,6 +9,9 @@ import DAO.Mantenimiento1DAO;
 import DTO.MantenimientosDto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,25 +37,34 @@ public class HistorialMantenimiento extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
+
+             request.getSession().removeAttribute("mantenimientos");
             
-            Mantenimiento1DAO  ObjDao = new Mantenimiento1DAO();
+            Mantenimiento1DAO ObjDao = new Mantenimiento1DAO();
             MantenimientosDto ObjDto = new MantenimientosDto();
-            
-            
-        if (request.getParameter("btn").equals("Consultar")){
-            
-            response.sendRedirect("/ProyectoSimva/spanish/mantenimientos/hisMan.jsp");
-            
-            
-        }
-                    
+
+            if (request.getParameter("btn").equals("Consultar")) {
+
+                String paramFechaInicial = request.getParameter("fechaInicio");
+                String paramFechaFinal = request.getParameter("fechaFin");
+
+                ArrayList<MantenimientosDto> mantenimientos = consultarMantenimientos(paramFechaInicial, paramFechaFinal);
+                
+                if(mantenimientos != null || !mantenimientos.isEmpty()){
+                     request.getSession().setAttribute("mantenimientos", mantenimientos);
+                }else{
+                    request.getSession().setAttribute("mensaje", "No se encontraron mantenimientos");
+                }
+                
+                response.sendRedirect("/ProyectoSimva/spanish/mantenimiento/hisMan.jsp");
+
+            }
+
         }
     }
 
-    
-    
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -91,5 +103,21 @@ public class HistorialMantenimiento extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private ArrayList<MantenimientosDto> consultarMantenimientos(String fechaInicio, String fechaFin) {
+        Mantenimiento1DAO mantenimientoDAO = new Mantenimiento1DAO();
+
+        //pasar las fechas a java.sql.date
+        Date fechaInicioSql = Date.valueOf(fechaInicio);
+        Date fechaFinSql = Date.valueOf(fechaFin);
+
+        return mantenimientoDAO.consultarHistorialPorFechas(fechaInicioSql, fechaFinSql);
+    }
+
+    private String eliminarMantenimiento(Integer idMentenimiento) {
+        Mantenimiento1DAO mantenimientoDAO = new Mantenimiento1DAO();
+        //return mantenimientoDAO.eliminarMantenimiento(idMentenimiento);
+        return "Eliminado";
+    }
 
 }
