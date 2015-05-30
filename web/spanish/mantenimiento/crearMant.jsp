@@ -194,7 +194,7 @@
 
         <script>
 
-            $().ready(function () {
+            //$().ready(function () {
 
                 $("#crearMantenimiento").validate({//abre validete
                     rules: {//abre rules
