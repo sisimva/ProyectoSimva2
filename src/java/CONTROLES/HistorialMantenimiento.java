@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.sql.Date;
-import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,27 +39,34 @@ public class HistorialMantenimiento extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-             request.getSession().removeAttribute("mantenimientos");
-            
-            Mantenimiento1DAO ObjDao = new Mantenimiento1DAO();
-            MantenimientosDto ObjDto = new MantenimientosDto();
+            request.getSession().removeAttribute("mantenimientos");
 
-            if (request.getParameter("btn").equals("Consultar")) {
+            String paramFechaInicial = request.getParameter("fechaInicio");
+            String paramFechaFinal = request.getParameter("fechaFin");
 
-                String paramFechaInicial = request.getParameter("fechaInicio");
-                String paramFechaFinal = request.getParameter("fechaFin");
-
-                ArrayList<MantenimientosDto> mantenimientos = consultarMantenimientos(paramFechaInicial, paramFechaFinal);
+            //Si es una eliminación las fechas están en session
+            if (paramFechaInicial == null || paramFechaFinal == null) {
+                paramFechaInicial = (String)request.getSession().getAttribute("fechaInicio");
+                paramFechaFinal = (String)request.getSession().getAttribute("fechaFin");
                 
-                if(mantenimientos != null || !mantenimientos.isEmpty()){
-                     request.getSession().setAttribute("mantenimientos", mantenimientos);
-                }else{
-                    request.getSession().setAttribute("mensaje", "No se encontraron mantenimientos");
+                String mantenimientoId = request.getParameter("mantenimientoId");
+                
+                if(mantenimientoId != null){
+                    eliminarMantenimiento(Integer.valueOf(mantenimientoId));
                 }
-                
-                response.sendRedirect("/ProyectoSimva/spanish/mantenimiento/hisMan.jsp");
-
             }
+
+            ArrayList<MantenimientosDto> mantenimientos = consultarMantenimientos(paramFechaInicial, paramFechaFinal);
+
+            if (mantenimientos != null || !mantenimientos.isEmpty()) {
+                request.getSession().setAttribute("mantenimientos", mantenimientos);
+                request.getSession().setAttribute("fechaInicio", paramFechaInicial);
+                request.getSession().setAttribute("fechaFin", paramFechaFinal);
+            } else {
+                request.getSession().setAttribute("mensaje", "No se encontraron mantenimientos");
+            }
+
+            response.sendRedirect("/ProyectoSimva/spanish/mantenimiento/hisMan.jsp");
 
         }
     }
@@ -116,8 +122,7 @@ public class HistorialMantenimiento extends HttpServlet {
 
     private String eliminarMantenimiento(Integer idMentenimiento) {
         Mantenimiento1DAO mantenimientoDAO = new Mantenimiento1DAO();
-        //return mantenimientoDAO.eliminarMantenimiento(idMentenimiento);
-        return "Eliminado";
+        return mantenimientoDAO.eliminarMantenimiento(idMentenimiento);
     }
 
 }
