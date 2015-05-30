@@ -129,4 +129,52 @@ public class Mantenimiento1DAO {
         }
         return listado;
     }
+
+    public String EliminarMantenimiento(int idMantenimiento) {
+
+        String rta = "";
+        try {
+            stmt = con.prepareStatement("DELETE FROM mantenimientos WHERE idMantenimeintos = ?");
+            stmt.setInt(1, idMantenimiento);
+
+            int resultado = stmt.executeUpdate();
+            if (resultado == 0) {
+                rta = "Fallo al eliminar";
+            } else {
+                rta = "Registro eliminado Exitosamente";
+            }
+        } catch (SQLException sqle) {
+            rta = sqle.getMessage();
+        }
+
+        return rta;
+    }
+
+    public String ActualizarMantenimiento(MantenimientosDto man) {
+        //boolean resul = false;
+        String rta = "";
+        try {
+            stmt = con.prepareStatement("UPDATE mantenimientos SET  placa=?, idTipoMantenimiento=?,  fechaIngresoMantenimiento=?, fechaSalidaMantenimiento=?, fechaProximoMantenimiento=?, observaciones=?, CcMantenimeintos=?  WHERE  idMantenimeintos=?;");
+
+            stmt.setString(1, man.getPlaca());
+            stmt.setInt(2, man.getIdTipoMantenimiento());
+            stmt.setString(3, man.getFechaIngresoMantenimiento());
+            stmt.setString(4, man.getFechaSalidaMantenimiento());
+            stmt.setString(5, man.getFechaProximoMantenimiento());
+            stmt.setString(6, man.getObservaciones());
+            stmt.setInt(7, man.getCcMantenimiento());
+            stmt.setInt(8, man.getIdMantenimientos());
+
+            int resultado = stmt.executeUpdate();
+            if (resultado == 0) {
+
+                rta = "Fallo al actualizar";
+            } else {
+                rta = "Registro actualizado Exitosamente";
+            }
+        } catch (SQLException sqle) {
+            rta = sqle.getMessage();
+        }
+        return rta;
+    }
 }

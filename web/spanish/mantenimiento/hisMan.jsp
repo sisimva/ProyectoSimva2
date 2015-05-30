@@ -64,7 +64,7 @@
                     <li class="active">Historial de Mantenimiento</li>   
                 </ol>
             </div>
-            <br>
+            <br> 
             <h3> HISTORIAL MANTENIMIENTO AUTOMOTRIZ PM-13</h3>
 
             <div id="foto">
@@ -82,7 +82,7 @@
                     <input class="fecha" name="fechaInicio" id="campoFechaInicio"  required type="date" tabindex="1"/>
                     <label for="FechaFinal">Hasta:</label>
                     <input class="fecha" name="FechaFinal" id="campoFechaFin"  required type="date" tabindex="2"/>
-                    <button class="btn  btn-primary" id="botonConsulta" type="submit" name="btn" tabindex="3" value="Consultar">Consultar</button>
+                    <button class="btn  btn-primary" id="botonConsulta" type="submit" name="btn" tabindex="3" value="HistorialMantenimiento">Consultar</button>
                 </div>
             </form>
 
