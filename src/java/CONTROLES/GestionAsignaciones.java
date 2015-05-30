@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,9 +40,9 @@ public class GestionAsignaciones extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
 
             String Asig = "";
-
-            AsignacionesDao ObjDaoAsig = new AsignacionesDao();
+            HttpSession miSession = request.getSession();
             AsignacionesDto ObjDtoAsig = new AsignacionesDto();
+            AsignacionesDao ObjDaoAsig = new AsignacionesDao();
 
             if (request.getParameter("enviar").equals("Guardar")) {
 
@@ -53,10 +54,16 @@ public class GestionAsignaciones extends HttpServlet {
                 ObjDtoAsig.setNovedadesVehiculos("novedadesVehiculo");
 
                 Asig = ObjDaoAsig.IngresarAsignacion(ObjDtoAsig);
-            } else if (request.getParameter("enviar").equals("Consultar")) {
                 
+            } else if (request.getParameter("enviar").equals("Consultar")) {
+                ObjDtoAsig = ObjDaoAsig.ConsultarAsignacion(request.getParameter("placa"));
+                if(ObjDtoAsig != null){
+                    miSession.setAttribute("ObjAsig", ObjDtoAsig);
+                    miSession.setAttribute("placa", request.getParameter("placa"));
+                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaAsignacion.jsp?Asig=" + Asig);
+                }
             }
-            response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacion.jsp?Asig=" + Asig);
+            //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacion.jsp?Asig=" + Asig);
         }
     }
 

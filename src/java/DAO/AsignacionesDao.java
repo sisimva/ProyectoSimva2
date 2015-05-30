@@ -56,10 +56,10 @@ public class AsignacionesDao {
         String rta = "";
         AsignacionesDto unaAsignacion = new AsignacionesDto();
         try {
-            stmt = con.prepareStatement("SELECT a.idAsignaciones, a.placa, v.sigla, v.idTiposVehiculo, tV.descripcionTipoVehiculo, "
-                    + "v.idMarcas, m.descripcionMarcaVehiculo, v.cilindraje, v.idEmpleoVehiculo, emV.descripcionEmpleoVehiculo, "
+            stmt = con.prepareStatement("SELECT a.idAsignaciones, v.fotoVehiculo, a.placa, v.sigla, v.idTiposVehiculo, tV.descripcionTipoVehiculo, "
+                    + "v.idMarcas, m.descripcionMarcaVehiculo, v.cilindraje, v.idEmpleoVehiculo, emV.descripcionEmpleoVehiculo, f.fotoFuncionario,"
                     + "a.numeroDocumento, f.idGrados, g.descripcionGrado, f.apellido1, f.apellido2, f.nombre1, f.nombre2, f.licenciaConduccion, "
-                    + "f.idCategoria, c.descripcionCategoria, vencimientoLicencia, a.fechaAsignacion, a.fechaDesasignacion, a.novedadesVehiculo "
+                    + "f.idCategoria, c.descripcionCategoria, f.vencimientoLicencia, a.fechaAsignacion, a.fechaDesasignacion, a.novedadesVehiculo "
                     + "FROM asignaciones as a "
                     + "JOIN vehiculos as v ON (a.placa = v.placa)"
                     + "JOIN tiposvehiculo as tV ON (v.idTiposVehiculo = tV.idTiposVehiculo)"
@@ -73,12 +73,31 @@ public class AsignacionesDao {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 unaAsignacion.setIdAsignaciones(rs.getInt("a.idAsignaciones"));
+                unaAsignacion.setFotoVehiculo(rs.getString("v.fotoVehiculo"));
                 unaAsignacion.setPlaca(rs.getString("a.placa"));
                 unaAsignacion.setSigla(rs.getString("v.sigla"));
-                unaAsignacion.setIdTiposVehiculo(rs.getString("v.idTiposVehiculo"));
-                unaAsignacion.setDescripcionTipoVehiculo("tV.descripcionTipoVehiculo");
-                unaAsignacion.setIdMarcas("v.idMarcas");
+                unaAsignacion.setIdTiposVehiculo(rs.getInt("v.idTiposVehiculo"));
+                unaAsignacion.setDescripcionTipoVehiculo(rs.getString("tV.descripcionTipoVehiculo"));
+                unaAsignacion.setIdMarcas(rs.getInt("v.idMarcas"));
                 unaAsignacion.setDescripcionMarcaVehiculo("m.descripcionMarcaVehiculo");
+                unaAsignacion.setCilindraje(rs.getInt("v.cilindraje"));
+                unaAsignacion.setIdEmpleoVehiculo(rs.getInt("v.idEmpleoVehiculo"));
+                unaAsignacion.setDescripcionEmpleoVehiculo(rs.getString("emV.descripcionEmpleoVehiculo"));
+                unaAsignacion.setFotoFuncionario(rs.getString("f.fotoFuncionario,"));
+                unaAsignacion.setNumeroDocumento(rs.getInt("a.numeroDocumento"));
+                unaAsignacion.setIdGrados(rs.getInt("f.idGrados"));
+                unaAsignacion.setDescripcionGrado(rs.getString("g.descripcionGrado"));
+                unaAsignacion.setApellido1(rs.getString(" f.apellido1"));
+                unaAsignacion.setApellido2(rs.getString("f.apellido2"));
+                unaAsignacion.setNombre1(rs.getString("f.nombre1"));
+                unaAsignacion.setNombre2(rs.getString("f.nombre2"));
+                unaAsignacion.setLicenciaConduccion(rs.getString("f.licenciaConduccion"));
+                unaAsignacion.setIdCategoria(rs.getInt("f.idCategoria"));
+                unaAsignacion.setDescripcionCategoria(rs.getString("c.descripcionCategoria"));
+                unaAsignacion.setVencimientoLicencia(rs.getString("f.vencimientoLicencia"));
+                unaAsignacion.setFechaAsignacion(rs.getString("a.fechaAsignacion"));
+                unaAsignacion.setFechaDesasignacion(rs.getString("a.fechaDesasignacion"));
+                unaAsignacion.setNovedadesVehiculos(rs.getString("a.novedadesVehiculo"));
             }
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
@@ -92,7 +111,7 @@ public class AsignacionesDao {
          }
          }*/
 
-    
-    return unaAsignacion ;
-}
+
+        return unaAsignacion;
+    }
 }

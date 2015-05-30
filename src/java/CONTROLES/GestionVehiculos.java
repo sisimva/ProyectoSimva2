@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Jairo
+ * @author Jairo Medina
  */
 public class GestionVehiculos extends HttpServlet {
 

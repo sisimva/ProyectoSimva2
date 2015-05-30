@@ -48,7 +48,7 @@
         <a href="formConsultaVehiculos.jsp" title="Consulta de veh铆culos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
         <a href="formConsultaAsignacion.jsp" title="Consulta asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Consulta asignaci髇</a>
         <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
-        <a href="../index-es.html" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="../index-es.jsp" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 

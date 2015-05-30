@@ -18,11 +18,150 @@ public class AsignacionesDto {
     private String fechaDesasignacion;
     private String novedadesVehiculos;
     private String sigla;
-    private String idTiposVehiculo;
+    private int  idTiposVehiculo;
     private String descripcionTipoVehiculo;
-    private String idMarcas;
+    private int idMarcas;
     private String descripcionMarcaVehiculo;
+    private int cilindraje;
+    private int idEmpleoVehiculo;
+    private String descripcionEmpleoVehiculo;
+    private int idGrados;
+    private String descripcionGrado;
+    private String  apellido1;
+    private String apellido2;
+    private String nombre1;
+    private String nombre2;
+    private String licenciaConduccion;
+    private int idCategoria;
+    private String descripcionCategoria;
+    private String vencimientoLicencia;
+    private String fotoVehiculo;
+    private String fotoFuncionario;
 
+    public String getFotoFuncionario() {
+        return fotoFuncionario;
+    }
+
+    public void setFotoFuncionario(String fotoFuncionario) {
+        this.fotoFuncionario = fotoFuncionario;
+    }
+
+    public String getFotoVehiculo() {
+        return fotoVehiculo;
+    }
+
+    public void setFotoVehiculo(String fotoVehiculo) {
+        this.fotoVehiculo = fotoVehiculo;
+    }
+
+    public String getVencimientoLicencia() {
+        return vencimientoLicencia;
+    }
+
+    public void setVencimientoLicencia(String vencimientoLicencia) {
+        this.vencimientoLicencia = vencimientoLicencia;
+    }
+
+    public String getDescripcionCategoria() {
+        return descripcionCategoria;
+    }
+
+    public void setDescripcionCategoria(String descripcionCategoria) {
+        this.descripcionCategoria = descripcionCategoria;
+    }
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getLicenciaConduccion() {
+        return licenciaConduccion;
+    }
+
+    public void setLicenciaConduccion(String licenciaConduccion) {
+        this.licenciaConduccion = licenciaConduccion;
+    }
+
+    public String getNombre2() {
+        return nombre2;
+    }
+
+    public void setNombre2(String nombre2) {
+        this.nombre2 = nombre2;
+    }
+
+    public String getNombre1() {
+        return nombre1;
+    }
+
+    public void setNombre1(String nombre1) {
+        this.nombre1 = nombre1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+    public String getDescripcionGrado() {
+        return descripcionGrado;
+    }
+
+    public void setDescripcionGrado(String descripcionGrado) {
+        this.descripcionGrado = descripcionGrado;
+    }
+    
+
+    public int getIdGrados() {
+        return idGrados;
+    }
+
+    public void setIdGrados(int idGrados) {
+        this.idGrados = idGrados;
+    }
+
+    public String getDescripcionEmpleoVehiculo() {
+        return descripcionEmpleoVehiculo;
+    }
+
+    public void setDescripcionEmpleoVehiculo(String descripcionEmpleoVehiculo) {
+        this.descripcionEmpleoVehiculo = descripcionEmpleoVehiculo;
+    }
+
+
+
+    public int getIdEmpleoVehiculo() {
+        return idEmpleoVehiculo;
+    }
+
+    public void setIdEmpleoVehiculo(int idEmpleoVehiculo) {
+        this.idEmpleoVehiculo = idEmpleoVehiculo;
+    }
+
+    public int getCilindraje() {
+        return cilindraje;
+    }
+
+    public void setCilindraje(int cilindraje) {
+        this.cilindraje = cilindraje;
+    }
+
+  
     public String getDescripcionMarcaVehiculo() {
         return descripcionMarcaVehiculo;
     }
@@ -31,13 +170,6 @@ public class AsignacionesDto {
         this.descripcionMarcaVehiculo = descripcionMarcaVehiculo;
     }
 
-    public String getIdMarcas() {
-        return idMarcas;
-    }
-
-    public void setIdMarcas(String idMarcas) {
-        this.idMarcas = idMarcas;
-    }
 
     public String getDescripcionTipoVehiculo() {
         return descripcionTipoVehiculo;
@@ -47,13 +179,15 @@ public class AsignacionesDto {
         this.descripcionTipoVehiculo = descripcionTipoVehiculo;
     }
 
-    public String getIdTiposVehiculo() {
-        return idTiposVehiculo;
+    public int getIdMarcas() {
+        return idMarcas;
     }
 
-    public void setIdTiposVehiculo(String idTiposVehiculo) {
-        this.idTiposVehiculo = idTiposVehiculo;
+    public void setIdMarcas(int idMarcas) {
+        this.idMarcas = idMarcas;
     }
+
+
 
     public String getSigla() {
         return sigla;
@@ -61,6 +195,14 @@ public class AsignacionesDto {
 
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+
+    public int getIdTiposVehiculo() {
+        return idTiposVehiculo;
+    }
+
+    public void setIdTiposVehiculo(int idTiposVehiculo) {
+        this.idTiposVehiculo = idTiposVehiculo;
     }
 
     public AsignacionesDto() {
