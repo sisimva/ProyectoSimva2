@@ -7,27 +7,71 @@ package DTO;
 
 /**
  *
- * @author andres
+ * Author : Jairo Medina
  */
 public class AsignacionesDto {
+
     private int idAsignaciones;
     private int numeroDocumento;
     private String placa;
     private String fechaAsignacion;
-    private String fechaDesacignacion;
+    private String fechaDesasignacion;
     private String novedadesVehiculos;
+    private String sigla;
+    private String idTiposVehiculo;
+    private String descripcionTipoVehiculo;
+    private String idMarcas;
+    private String descripcionMarcaVehiculo;
+
+    public String getDescripcionMarcaVehiculo() {
+        return descripcionMarcaVehiculo;
+    }
+
+    public void setDescripcionMarcaVehiculo(String descripcionMarcaVehiculo) {
+        this.descripcionMarcaVehiculo = descripcionMarcaVehiculo;
+    }
+
+    public String getIdMarcas() {
+        return idMarcas;
+    }
+
+    public void setIdMarcas(String idMarcas) {
+        this.idMarcas = idMarcas;
+    }
+
+    public String getDescripcionTipoVehiculo() {
+        return descripcionTipoVehiculo;
+    }
+
+    public void setDescripcionTipoVehiculo(String descripcionTipoVehiculo) {
+        this.descripcionTipoVehiculo = descripcionTipoVehiculo;
+    }
+
+    public String getIdTiposVehiculo() {
+        return idTiposVehiculo;
+    }
+
+    public void setIdTiposVehiculo(String idTiposVehiculo) {
+        this.idTiposVehiculo = idTiposVehiculo;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
 
     public AsignacionesDto() {
     }
-    
-    
 
-    public AsignacionesDto(int idAsignaciones, int numeroDocumento, String placa, String fechaAsignacion, String fechaDesacignacion, String novedadesVehiculos) {
+    public AsignacionesDto(int idAsignaciones, int numeroDocumento, String placa, String fechaAsignacion,  String fechaDesasignacion, String novedadesVehiculos) {
         this.idAsignaciones = idAsignaciones;
         this.numeroDocumento = numeroDocumento;
         this.placa = placa;
         this.fechaAsignacion = fechaAsignacion;
-        this.fechaDesacignacion = fechaDesacignacion;
+        this.fechaDesasignacion =  fechaDesasignacion;
         this.novedadesVehiculos = novedadesVehiculos;
     }
 
@@ -63,12 +107,12 @@ public class AsignacionesDto {
         this.fechaAsignacion = fechaAsignacion;
     }
 
-    public String getFechaDesacignacion() {
-        return fechaDesacignacion;
+    public String getFechaDesasignacion() {
+        return fechaDesasignacion;
     }
 
-    public void setFechaDesacignacion(String fechaDesacignacion) {
-        this.fechaDesacignacion = fechaDesacignacion;
+    public void setFechaDesasignacion(String fechaDesasignacion) {
+        this.fechaDesasignacion = fechaDesasignacion;
     }
 
     public String getNovedadesVehiculos() {
@@ -78,6 +122,5 @@ public class AsignacionesDto {
     public void setNovedadesVehiculos(String novedadesVehiculos) {
         this.novedadesVehiculos = novedadesVehiculos;
     }
-    
-    
+
 }

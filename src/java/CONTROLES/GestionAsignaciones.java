@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Jairo
+ * @author Jairo Medina
  */
 @WebServlet(name = "GestionAsignaciones", urlPatterns = {"/GestionAsignaciones"})
 public class GestionAsignaciones extends HttpServlet {
@@ -49,11 +49,12 @@ public class GestionAsignaciones extends HttpServlet {
                 ObjDtoAsig.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
                 ObjDtoAsig.setPlaca(request.getParameter("placa"));
                 ObjDtoAsig.setFechaAsignacion("fechaAsignacion");
-                ObjDtoAsig.setFechaDesacignacion("fechaDesasignacion");
+                ObjDtoAsig.setFechaDesasignacion("fechaDesasignacion");
                 ObjDtoAsig.setNovedadesVehiculos("novedadesVehiculo");
 
                 Asig = ObjDaoAsig.IngresarAsignacion(ObjDtoAsig);
             } else if (request.getParameter("enviar").equals("Consultar")) {
+                
             }
             response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacion.jsp?Asig=" + Asig);
         }

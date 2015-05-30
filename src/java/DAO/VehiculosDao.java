@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Jairo
+ * @author Jairo Medina
  */
 public class VehiculosDao {
 

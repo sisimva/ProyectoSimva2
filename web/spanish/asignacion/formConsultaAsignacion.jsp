@@ -1,14 +1,17 @@
 <%-- 
-    Document   : formConsultaVehiculos
-    Created on : 18-Abr-2015, 19:24:41
-    @author Jairo
+    Document   : formConsultaAsignacion
+    Created on : 29-may-2015, 21:55:29
+    Author     : Jairo Medina
 --%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <%@page import="DTO.VehiculosDto"%>
 <html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         <meta charset="utf-8">
         <!-- InstanceBeginEditable name="doctitle" -->
-        <title>Consulta de Veh韈ulo</title>
+        <title>Consulta de Asignaci贸n</title>
         <!-- InstanceEndEditable -->
         <!-- InstanceBeginEditable name="head" -->
         <link type="text/css" rel="stylesheet" href="../css/estilos.css">
@@ -27,13 +30,13 @@
         </div>	
         <div id="texto">
             <p id="h1"> SIMVA <br />  </p>
-            <p id="h2"> Sistema de Informaci髇 de Control y Mantenimiento de Veh韈ulos Automotores </p>
+            <p id="h2"> Sistema de Informaci贸n de Control y Mantenimiento de Veh铆culos Automotores </p>
         </div>
         <div id="logo2">
             <img src="../img/logos/logo2.png" alt="logodos" width="110" height="110" />
         </div>
         <!-- InstanceBeginEditable name="user" -->
-        <div id="user" title="Esta conectado como Asignaci髇"> Asig
+        <div id="user" title="Esta conectado como Asignaci贸n"> Asig
             <!-- InstanceEndEditable -->
             <span class="fa fa-user fa-3x"> </span>
             <span class="trianguloar"></span>
@@ -45,8 +48,8 @@
     <nav>
         <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
-        <a href="formConsultaVehiculos.jsp" title="Consulta de veh韈ulos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
+        <a href="formConsultaVehiculos.jsp" title="Consulta de veh铆culos"><span class="fa fa-car fa-1x"> Consulta de veh铆culos</a>
+        <a href="formConsultaAsignacion.jsp" title="Consulta de  asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Consulta de  asignaci贸n</a>
         <a href="../index-es.jsp" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
@@ -65,16 +68,16 @@
                 <br>
                 <ol class="breadcrumb">
                     <li><a href="../Asignacion.jsp">Inicio</a></li>
-                    <li class="active">Formulario Consulta de Veh韈ulo</li>   
+                    <li class="active">Formulario Consulta de Asignaci贸n</li>   
                 </ol>
             </div>
 
-            <form class="formularioConsultaVehiculos" method="post" action="../../GestionVehiculos">
-                <h3>Formulario Consulta de Veh韈ulo</h3>
+            <form class="formularioConsultaAsignacion" method="post" action="../../GestionAsignaciones">
+                <h3>Formulario Consulta Asignaci贸n de Veh铆culo</h3>
 
                 <div class="cajas" id="cajaUno">  
-                    <label for="placa">Digite la placa del veh韈ulo:</label>
-                    <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y n鷐eros"><br><br>
+                    <label for="placa">Digite la placa del veh铆culo:</label>
+                    <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y n煤meros"><br><br>
                     <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
                     <br>
                 </div>
@@ -87,7 +90,7 @@
     </section>
     <script>
         $().ready(function () {
-            $(".formularioConsultaVehiculos").validate({
+            $(".formularioConsultaAsignacion").validate({
                 rules: {
                     placa: {
                         required: true,
@@ -102,8 +105,8 @@
                         maxlength: "Maximo {0} caracteres"
                     }
                 } // Cierre de los mensajes
-            }); // Cierre de la funci贸n validate
-        }); // Cierre de la funci贸n ready
+            }); // Cierre de la funci脙鲁n validate
+        }); // Cierre de la funci脙鲁n ready
 
     </script>
     <!-- InstanceEndEditable -->

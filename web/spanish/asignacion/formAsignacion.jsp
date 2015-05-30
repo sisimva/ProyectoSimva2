@@ -43,9 +43,10 @@
     <!-- InstanceBeginEditable name="nav" -->
 
     <nav>
-        <a href="../asignacion.html" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de vehÃ­culos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
+        <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="formConsultaVehiculos.jsp" title="Consulta de vehÃ­culos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
+        <a href="formConsultaAsignacion.jsp" title="Consulta asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Consulta asignación</a>
         <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
         <a href="../index-es.html" title="Cerrar secciÃ³n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
@@ -54,178 +55,168 @@
     <div id="espacio2"></div>
     <!-- InstanceBeginEditable name="Body" -->
     <body>
-        <section>
-            <div id="area">
-                <div id="miga">
+    <section>
+        <div id="area">
+            <div id="miga">
+                <br>
+                <ol class="breadcrumb">
+                    <li><a href="../Asignacion.jsp">Inicio</a></li>
+                    <li class="active">Formulario de Asignacion</li>   
+                </ol>
+            </div>
+            <form class="formularioAsignacionVehiculo" method="post" action="GestionAsignaciones">
+                <h3>Formulario Asignación de Vehículo  <label for="numeroActa">Número:</label>
+                    <input name="numeroActa" id="numeroActa" type="text" placeholder= "Ej. 0001" tabindex="1" required minlength="4" maxlength="10">
+                </h3>
+
+                <div class="cajas" id="cajaUno">  
+                    <div name="fotoVehiculo"  id="fotoVehiculo"> 
+                        <img src="../img/Vehiculo.jpg" alt="foto" width="130px" height="100px">
+                    </div>
                     <br>
-                    <ol class="breadcrumb">
-                        <li><a href="../Asignacion.html">Inicio</a></li>
-                        <li class="active">Formulario de Asignacion</li>   
-                    </ol>
+                    <label for="placa">Placa:</label>
+                    <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8"> 
+
+                    <label for="sigla">Sigla:</label>
+                    <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="3" minlength="5" maxlength="12" disabled>
+
+                    <label for="tipoVehiculo">Tipo:</label>
+                    <input name="tipoVehiculo" id="tipoVehiculo" type="text" placeholder="Ej. Camiones 2.5 ton TÃ¢ctico" tabindex="4" disabled>
+
+
+                    <label for="marcaVehiculo">Marca:</label>
+                    <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled>
+
+                    <label for="cilindraje">Cilindraje:</label>
+                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled>
+
+                    <label for="empleoVehiculo">Empleo:</label>
+                    <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="">
                 </div>
-
-                <form class="formularioAsignacionVehiculo" method="post" action="GestionAsignaciones">
-                    <h3>Formulario Asignacion de Vehiculo</h3>
-
-                    <div class="cajas" id="cajaUno">  
-                        <label for="numeroActa">Numero de Acta:</label>
-                        <input name="numeroActa" id="numeroActa" type="text" placeholder= "Ej. 0001" tabindex="1" required minlength="4" maxlength="10">
-
-                        <label for="placa">Placa:</label>
-                        <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8"> 
-
-
-                        <label for="sigla">Sigla:</label>
-                        <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="3" minlength="5" maxlength="12" disabled>
-
-                        <label for="tipoVehiculo">Tipo:</label>
-                        <input name="tipoVehiculo" id="tipoVehiculo" type="text" placeholder="Ej. Camiones 2.5 ton TÃ¢ctico" tabindex="4" disabled>
-
-
-                        <label for="marcaVehiculo">Marca:</label>
-                        <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled>
-
-                        <label for="cilindraje">Cilindraje:</label>
-                        <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled>
-
-                        <label for="empleoVehiculo">Empleo:</label>
-                        <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="">
-                        
-                            <div name="fotoVehiculo"  id="fotoVehiculo"> 
-                            <img src="../img/Vehiculo.jpg" alt="foto" width="150px" height="100px">
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="cajas" id="cajados">
-                        <label for="numeroDocumento">Cédula:</label>
-                        <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="13" required maxlength="10">
-
-                        <label for="grado">Grado:</label>
-                        <input name="grado"  id="grados" tabindex="3" placeholder= "General"disabled>
-                         
-                        <label for="campoApellido1">Primer Apellido:</label>
-                        <input name="apellido1" id="campoApellido1" type="text" placeholder="Ej. Medina" tabindex="9" required minlength="3" maxlength="10" disabled>
-
-                        <label for="campoApellido2">Segundo Apellido:</label>
-                        <input name="apellido2" id="campoApellido2" type="text" placeholder="Ej. Tarazona" tabindex="10" maxlength="10" disabled>
-
-                        <label for="campoNombre1">Primer Nombre:</label>
-                        <input name="nombre1" id="campoNombre1" type="text" placeholder="Ej. Jairo" tabindex="11" required maxlength="10" disabled>
-
-                        <label for="campoNombre2">Segundo Nombre:</label>
-                        <input name="nombre2" id="campoNombre2" type="text" placeholder="Ej. Ismael" tabindex="12" maxlength="10" disabled>
-
-                        <label for="novedadesVehiculo">Novedades Vehículo:</label>
-                        <input name="novedadesVehiculo" id="novedadesVehiculo" type="text" placeholder="Sin Novedad especial" tabindex="14" required="">
-
-
-                    </div>
+                <div class="cajas" id="cajados">
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <!--<img src="../img/funcionario.jpg" alt="foto" width="120" height="100"-->
-                        <img src="../img/funcionario123.jpg" alt="foto" width="120" height="100">
+                        <img src="../img/funcionario123.jpg" alt="foto" width="130" height="100">
                     </div>
-                    <div class="cajas" id="cajaTres">
+                    <br>
+                    <label for="numeroDocumento">Cédula:</label>
+                    <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="13" required maxlength="10">
 
-                        <label for="licenciaConduccion">Licencia de conducción:</label>
-                        <input name="licenciaConduccion" id="licenciaConduccion" type="text" placeholder= "Ej. 1100100096612385" tabindex="15" required minlength="8" maxlength="17" disabled>
+                    <label for="grado">Grado:</label>
+                    <input name="grado"  id="grados" tabindex="3" placeholder= "General"disabled>
 
-                        <label for="categoria">Categoría:</label>
-                        <input name="categoria" id="categoria" type="text" placeholder= "Ej. C1" tabindex="16" required disabled>
+                    <label for="campoApellido1">Primer Apellido:</label>
+                    <input name="apellido1" id="campoApellido1" type="text" placeholder="Ej. Medina" tabindex="9" required minlength="3" maxlength="10" disabled>
 
-                        <br> 
+                    <label for="campoApellido2">Segundo Apellido:</label>
+                    <input name="apellido2" id="campoApellido2" type="text" placeholder="Ej. Tarazona" tabindex="10" maxlength="10" disabled>
 
-                        <label for="vencimientoCategoria">Fecha Vencimiento</label>
-                        <input name="vencimientoCategoria" class="fechas" id="vencimientoCategoria" type="date" tabindex="17" required maxlength="10" disabled>
+                    <label for="campoNombre1">Primer Nombre:</label>
+                    <input name="nombre1" id="campoNombre1" type="text" placeholder="Ej. Jairo" tabindex="11" required maxlength="10" disabled>
 
-                        <label for="fechaAsignacion">Fecha Asignació</label>
-                        <input name="fechaAsignacion" class="fechas" id="fechaAsignacion" type="date" tabindex="13" required maxlength="10">
+                    <label for="campoNombre2">Segundo Nombre:</label>
+                    <input name="nombre2" id="campoNombre2" type="text" placeholder="Ej. Ismael" tabindex="12" maxlength="10" disabled>
+                </div>
 
+                <div class="cajas" id="cajaTres">
 
-                        <label for="fechaDesasignacion">Fecha DesAsignacíon</label>
-                        <input name="fechaDesasignacion" class="fechas" id="fechaDesasignacion" type="date" tabindex="14" required maxlength="10">
+                    <label for="licenciaConduccion">Licencia de conducción:</label>
+                    <input name="licenciaConduccion" id="licenciaConduccion" type="text" placeholder= "Ej. 1100100096612385" tabindex="15" required minlength="8" maxlength="17" disabled>
 
-                        <br>
-                        <input class="btn btn-primary" type="submit" name="enviar" value="Guardar" >
-                    </div>
+                    <label for="categoria">Categoría:</label>
+                    <input name="categoria" id="categoria" type="text" placeholder= "Ej. C1" tabindex="16" required disabled>
+                    <br> 
 
+                    <label for="vencimientoCategoria">Fecha Vencimiento</label>
+                    <input name="vencimientoCategoria" class="fechas" id="vencimientoCategoria" type="date" tabindex="17" required maxlength="10" disabled>
 
-                </form>
+                    <label for="fechaAsignacion">Fecha Asignación</label>
+                    <input name="fechaAsignacion" class="fechas" id="fechaAsignacion" type="date" tabindex="13" required maxlength="10">
 
-        </section>
-        <script>
-            $().ready(function () {
-                $(".formularioAsignacionVehiculo").validate({
-                    rules: {
-                        numeroActa: {
-                            required: true,
-                            digits: true,
-                            minlength: 4,
-                            maxlength: 10
-                        },
-                        placa: {
-                            required: true,
-                            alphanumeric: true,
-                            minlength: 5,
-                            maxlength: 8
-                        },
-                       numeroDocumento: {
-                            required: true,
-                            digits: true,
-                            minlength: 5,
-                            maxlength: 10
-                        },
-                        novedadesVehiculo: {
-                            required: true
-                        },
-                        fechaAsignacion: {
-                            required: true
-                        },
-                        fechaDesasignacion: {
-                            required: true
-                        }
+                    <label for="fechaDesasignacion">Fecha DesAsignacíon</label>
+                    <input name="fechaDesasignacion" class="fechas" id="fechaDesasignacion" type="date" tabindex="14" required maxlength="10">
+
+                    <label for="novedadesVehiculo">Novedades Vehículo:</label>
+                    <input name="novedadesVehiculo" id="novedadesVehiculo" type="text" placeholder="Sin Novedad especial" tabindex="14" required="">
+
+                    <br>
+                    <input class="btn btn-primary" type="submit" name="enviar" value="Guardar" >
+                </div>
+            </form>
+
+    </section>
+    <script>
+        $().ready(function () {
+            $(".formularioAsignacionVehiculo").validate({
+                rules: {
+                    numeroActa: {
+                        required: true,
+                        digits: true,
+                        minlength: 4,
+                        maxlength: 10
                     },
-                    messages: {
-                        numeroActa: {
-                            required: "Campo requerido",
-                            digits: "Digite solamente nÃºmeros",
-                            minlength: "Minimo {0} caracteres",
-                            maxlength: "Maximo {0} caracteres"
-                        },
-                        placa: {
-                            required: "Campo requerido",
-                            alphanumeric: "Digite solamente nÃºmeros y letras",
-                            minlength: "Minimo {0} caracteres",
-                            maxlength: "Maximo {0} caracteres"
-                        },
-                        numeroDocumento: {
-                            required: "Campo requerido",
-                            digits: "Por favor digite solo numeros",
-                            minlength: "MÃ­nimo {0} caracteres"
-                        },
-                       novedadesVehiculo: {
-                            required: "Campo requerido"
-                        },
-                        fechaAsignacion: {
-                            required: "Campo requerido"
-                        },
-                        fechaDesasignacion: {
-                            required: "Campo requerido"
-                        }
+                    placa: {
+                        required: true,
+                        alphanumeric: true,
+                        minlength: 5,
+                        maxlength: 8
+                    },
+                    numeroDocumento: {
+                        required: true,
+                        digits: true,
+                        minlength: 5,
+                        maxlength: 10
+                    },
+                    novedadesVehiculo: {
+                        required: true
+                    },
+                    fechaAsignacion: {
+                        required: true
+                    },
+                    fechaDesasignacion: {
+                        required: true
+                    }
+                },
+                messages: {
+                    numeroActa: {
+                        required: "Campo requerido",
+                        digits: "Digite solamente nÃºmeros",
+                        minlength: "Minimo {0} caracteres",
+                        maxlength: "Maximo {0} caracteres"
+                    },
+                    placa: {
+                        required: "Campo requerido",
+                        alphanumeric: "Digite solamente nÃºmeros y letras",
+                        minlength: "Minimo {0} caracteres",
+                        maxlength: "Maximo {0} caracteres"
+                    },
+                    numeroDocumento: {
+                        required: "Campo requerido",
+                        digits: "Por favor digite solo numeros",
+                        minlength: "MÃ­nimo {0} caracteres"
+                    },
+                    novedadesVehiculo: {
+                        required: "Campo requerido"
+                    },
+                    fechaAsignacion: {
+                        required: "Campo requerido"
+                    },
+                    fechaDesasignacion: {
+                        required: "Campo requerido"
+                    }
 
-                    } // Cierre de los mensajes
-                }); // Cierre de la funciÃ³n validate
-            }); // Cierre de la funciÃ³n ready
+                } // Cierre de los mensajes
+            }); // Cierre de la funciÃ³n validate
+        }); // Cierre de la funciÃ³n ready
 
-        </script>
+    </script>
 
-        <!-- InstanceEndEditable -->
+    <!-- InstanceEndEditable -->
 
-        <div id="espacio3"></div>
+    <div id="espacio3"></div>
 
     <foot>
-        <div class="pie">VersiÃ³n 1.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+        <div class="pie">Versión 1.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
     </foot>
 
     <div id="espacio4"></div>
