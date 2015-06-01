@@ -50,8 +50,8 @@ public class GestionLogin extends HttpServlet {
             
             if(request.getParameter("Boton").equals("Ingresar")){
             
-            String usuario = request.getParameter("usuario");
-            String contrasenia = request.getParameter("clave");
+            String usuario = request.getParameter("username");
+            String contrasenia = request.getParameter("password");
             
             ObjDto.setUsuarioLogin(usuario);
             ObjDto.setContraseña(contrasenia);
@@ -78,27 +78,27 @@ public class GestionLogin extends HttpServlet {
                
             }
             
-            }else if (request.getParameter("Boton").equals("Enviar Solicitud")){
+            }else if (request.getParameter("Boton").equals("Enviar")){
             
                String [] DatosC = new String[1];
-               DatosC = Login.Correo(Long.parseLong(request.getParameter("Documento")));            
+               DatosC = Login.Correo(Long.parseLong(request.getParameter("email")));            
                String Correo= DatosC[0];
                
                String [] DatosU = new String[2];
-               DatosU = Login.Usuario(Long.parseLong(request.getParameter("Documento"))); 
+               DatosU = Login.Usuario(Long.parseLong(request.getParameter("email"))); 
                
                String Usuario= DatosU[0];
                String Clave= DatosU[1];
                
             if(Correo.equals("No Existe")){  
-            response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=1");
+            response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=1");
             
             }else if(Usuario.equals("No Existe")) {
-                    response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=2");                                    
+                    response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=2");                                    
                 }else{
                 String Mensaje = "El sistema Simva le recuerda su nombre de usuario = "+Usuario+"  con la clave correspondiente = "+Clave;
                     //Mailer.send(Correo, "Nueva Contrasena", Mensaje);
-                    response.sendRedirect("/ProyectoSimva/spanish/recupera.jsp?mensaje=3&correo="+Correo);                     
+                    response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=3&correo="+Correo);                     
                 }           
             }
         }
