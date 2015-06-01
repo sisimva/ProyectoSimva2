@@ -79,15 +79,15 @@ public class AsignacionesDao {
                 unaAsignacion.setIdTiposVehiculo(rs.getInt("v.idTiposVehiculo"));
                 unaAsignacion.setDescripcionTipoVehiculo(rs.getString("tV.descripcionTipoVehiculo"));
                 unaAsignacion.setIdMarcas(rs.getInt("v.idMarcas"));
-                unaAsignacion.setDescripcionMarcaVehiculo("m.descripcionMarcaVehiculo");
+                unaAsignacion.setDescripcionMarcaVehiculo(rs.getString("m.descripcionMarcaVehiculo"));
                 unaAsignacion.setCilindraje(rs.getInt("v.cilindraje"));
                 unaAsignacion.setIdEmpleoVehiculo(rs.getInt("v.idEmpleoVehiculo"));
                 unaAsignacion.setDescripcionEmpleoVehiculo(rs.getString("emV.descripcionEmpleoVehiculo"));
-                unaAsignacion.setFotoFuncionario(rs.getString("f.fotoFuncionario,"));
+                unaAsignacion.setFotoFuncionario(rs.getString("f.fotoFuncionario"));
                 unaAsignacion.setNumeroDocumento(rs.getInt("a.numeroDocumento"));
                 unaAsignacion.setIdGrados(rs.getInt("f.idGrados"));
                 unaAsignacion.setDescripcionGrado(rs.getString("g.descripcionGrado"));
-                unaAsignacion.setApellido1(rs.getString(" f.apellido1"));
+                unaAsignacion.setApellido1(rs.getString("f.apellido1"));
                 unaAsignacion.setApellido2(rs.getString("f.apellido2"));
                 unaAsignacion.setNombre1(rs.getString("f.nombre1"));
                 unaAsignacion.setNombre2(rs.getString("f.nombre2"));
@@ -110,7 +110,6 @@ public class AsignacionesDao {
          }
          }
          }*/
-
 
         return unaAsignacion;
     }

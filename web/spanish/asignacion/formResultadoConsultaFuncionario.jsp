@@ -53,7 +53,7 @@
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
         <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
-        <a href="../index-es.html" title="Cerrar secciÃ³n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="../index-es.jsp" title="Cerrar sesión"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 
@@ -81,7 +81,7 @@
                 <h3>Resultado Consulta de Funcionario</h3>
 
                 <div class="cajas" id="cajaUno">  
-                    <label for="numeroDocumento">Cedula:</label>
+                    <label for="numeroDocumento">Cédula:</label>
                     <input name="numeroDocumento" id="numeroDocumento" type="text" class="inputad"  value='<%=ObjDtoFunci.getNumeroDocumento()%>' >
                     <br>
                     <label for="grado">Grado:</label>
@@ -181,7 +181,7 @@
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <img src="../img/funcionario123.jpg" alt="foto" width="120" height="100">
                     </div>
-                    <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">
+                <!--    <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">-->
                     <br>
                     <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
                 </div>
@@ -277,27 +277,27 @@
                 apellido1: {
                     required: "Campo requerido",
                     lettersonly: "Por favor Digite solo letras",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 },
                 apellido2: {
                     required: "Campo requerido",
                     lettersonly: "Por favor Digite solo letras",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 },
                 nombre1: {
                     required: "Campo requerido",
                     lettersonly: "Por favor Digite solo letras",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 },
                 nombre2: {
                     required: "Campo requerido",
                     lettersonly: "Por favor Digite solo letras",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 },
                 numeroDocumento: {
                     required: "Campo requerido",
                     digits: "Por favor digite solo numeros",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 },
                 ciudadDocumento: {
                     required: "Campo requerido"
@@ -308,13 +308,13 @@
                 telefono: {
                     required: "Campo requerido",
                     digits: "Por favor digite solo numeros",
-                    minlength: "MÃ­nimo {0} caracteres",
+                    minlength: "Mínimo {0} caracteres",
                     maxlength: "Maximo {0} caracteres"
                 },
                 movil: {
                     required: "Campo requerido",
                     digits: "Por favor digite solo numeros",
-                    minlength: "MÃ­nimo {0} caracteres",
+                    minlength: "Mínimo {0} caracteres",
                     maxlength: "Maximo {0} caracteres"
                 },
                 indicativo: {
@@ -350,7 +350,7 @@
 <div id="espacio3"></div>
 
 <foot>
-    <div class="pie">VersiÃ³n 5.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+    <div class="pie">Versión 5.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
 </foot>
 
 <div id="espacio4"></div>

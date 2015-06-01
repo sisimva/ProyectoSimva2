@@ -1,7 +1,7 @@
 <%-- 
     Document   : formConsultaFuncionarios
     Created on : 18-Abr-2015, 19:24:41
-    @author Jairo
+    @author Jairo Medina
 --%>
 
 <%@page import="DAO.FuncionariosDao"%>
@@ -87,7 +87,7 @@
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
         <a href="formAsignacion.jsp" title="Realizar asignación"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
-        <a href="../index-es.jsp" title="Cerrar sección"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="../index-es.jsp" title="Cerrar sesión"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 
@@ -95,9 +95,9 @@
     <!-- InstanceBeginEditable name="Body" -->
     <body>
         <%
-            HttpSession miSession = request.getSession();
-            FuncionariosDto ObjDtoFunci = new FuncionariosDto();
-            ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
+           // HttpSession miSession = request.getSession();
+           // FuncionariosDto ObjDtoFunci = new FuncionariosDto();
+            //ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
         %>  
     <section>
         <div id="area">
@@ -143,7 +143,7 @@
                 numeroDocumento: {
                     required: "Campo requerido",
                     digits: "Por favor digite solo numeros",
-                    minlength: "MÃ­nimo {0} caracteres"
+                    minlength: "Mínimo {0} caracteres"
                 }
             } // Cierre de los mensajes
         }); // Cierre de la funciÃ³n validate
@@ -155,7 +155,7 @@
 <div id="espacio3"></div>
 
 <foot>
-    <div class="pie">VersiÃ³n 5.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+    <div class="pie">Versión 5.0 | COPYRIGHT   &copy;2014 SIMVA | Contáctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
 </foot>
 
 <div id="espacio4"></div>

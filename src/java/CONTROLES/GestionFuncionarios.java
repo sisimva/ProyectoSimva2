@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Jairo
+ * @author Jairo Medina
  */
 public class GestionFuncionarios extends HttpServlet {
 
@@ -68,13 +68,16 @@ public class GestionFuncionarios extends HttpServlet {
                     miSession.setAttribute("ObjFunci", ObjDtoFunci);
                     miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
                     response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaFuncionario.jsp?funci=" + funci);
+                }else {
+                    //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
+                    RequestDispatcher Rd = request.getRequestDispatcher("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
+            //   Rd = getServletContext().getRequestDispatcher("/index.jsp?mensaje=1");
+                    Rd.forward(request, response);
                 }
                 /*else if (request.getParameter("enviar").equals("Eliminar"))
                  {
                  int Pos = Integer.parseInt(request.getParameter("pos"));
                  Funci = ObjDaoFunci.Eliminar(Pos);*/
-            } else if ((request.getParameter("enviar").equals("Consultar Otro"))) {
-                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
             } else if ((request.getParameter("enviar").equals("Actualizar"))) {
                 ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
                 ObjDtoFunci.setIdCiudad(Integer.parseInt(request.getParameter("ciudadDocumento")));

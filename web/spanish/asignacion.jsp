@@ -33,7 +33,7 @@
     	</div>	
         <div id="texto">
         	<p id="h1"> SIMVA <br />  </p>
-        	<p id="h2"> Sistema de Informacion de Control y Mantenimiento de Vehiculos Automotores </p>
+        	<p id="h2"> Sistema de Información de Control y Mantenimiento de Vehículos Automotores </p>
     	</div>
     	<div id="logo2">
     		<img src="img/logos/logo2.png" alt="logodos" width="110" height="110" />
@@ -55,8 +55,8 @@
         <a href="asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
         <a href="asignacion/formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="asignacion/formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
-        <a href="asignacion/formAsignacion.jsp" title="Realizar asignación"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a> 
-        <a href="index-es.jsp" title="Cerrar sección"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="asignacion/formConsultaAsignacion.jsp" title="Consulta de asignación"><span class="fa fa-check-square-o fa-1x"> Consulta asignación</a> 
+        <a href="index-es.jsp" title="Cerrar sesión"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
 <!-- InstanceEndEditable -->
 
@@ -74,7 +74,7 @@
 
                     <section class="main">
                 <BR>
-                <p> Asignacion </p>
+                <p> Asignación </p>
                 <h2> Seleccione una opción: </h2>
             
                 <ul class="ch-grid">
@@ -105,8 +105,8 @@
                             <div class="ch-info">
                                 <div class="ch-info-front ch-img-3"></div>
                                 <div class="ch-info-back">
-                                    <h3>Realizar<br>Asignación</h3>
-                                    <p> <a href="asignacion/formAsignacion.jsp"></a></p>
+                                    <h3>Consulta<br>Asignación</h3>
+                                    <p> <a href="asignacion/formConsultaAsignacion.jsp"></a></p>
                                 </div>
                             </div>
                         </div>

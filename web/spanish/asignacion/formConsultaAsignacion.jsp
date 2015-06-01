@@ -4,9 +4,10 @@
     Author     : Jairo Medina
 --%>
 
+<%@page import="DTO.AsignacionesDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<%@page import="DTO.VehiculosDto"%>
+
 <html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         <meta charset="utf-8">
@@ -59,8 +60,8 @@
     <body>
         <%
             HttpSession miSession = request.getSession();
-            VehiculosDto ObjDtoVehi = new VehiculosDto();
-            ObjDtoVehi = (VehiculosDto) miSession.getAttribute("ObjVehi");
+            AsignacionesDto ObjDtoAsig = new AsignacionesDto();
+            ObjDtoAsig = (AsignacionesDto) miSession.getAttribute("ObjAsig");
         %>  
     <section>
         <div id="area">

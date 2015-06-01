@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Jairo
+ * @author Jairo Medina
  */
 public class FuncionariosDao {
 
@@ -81,7 +81,7 @@ public class FuncionariosDao {
                     + "JOIN categorias ct ON (f.idCategoria = ct.idCategoria) "
                     + "WHERE numeroDocumento = ?;");
             stmt.setInt(1, cedula);
-            rs = stmt.executeQuery();// estaba al inicio de este bl;oque domingo 17052015 22:17
+            rs = stmt.executeQuery();
             while (rs.next()) {
                 unFuncionario.setNumeroDocumento(rs.getInt("f.numeroDocumento"));
                 unFuncionario.setIdCiudad(rs.getInt("idCiudad"));

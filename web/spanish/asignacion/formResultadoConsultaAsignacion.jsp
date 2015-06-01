@@ -104,56 +104,56 @@
                     <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled value="<%=ObjDtoAsig.getDescripcionMarcaVehiculo()%>">
 
                     <label for="cilindraje">Cilindraje:</label>
-                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled>
+                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled value="<%=ObjDtoAsig.getCilindraje() %>">
 
                     <label for="empleoVehiculo">Empleo:</label>
-                    <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="">
+                    <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="" value="<%=ObjDtoAsig.getDescripcionEmpleoVehiculo()%>">
                 </div>
                 <div class="cajas" id="cajados">
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <!--<img src="../img/funcionario.jpg" alt="foto" width="120" height="100"-->
-                        <img src="../img/funcionario123.jpg" alt="foto" width="130" height="100">
+                        <img src="../img/funcionario123.jpg" alt="foto" width="130" height="100" >
                     </div>
                     <br>
                     <label for="numeroDocumento">Cédula:</label>
-                    <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="13" required maxlength="10">
+                    <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="13" required maxlength="10" disabled value="<%=ObjDtoAsig.getNumeroDocumento()%>">
 
                     <label for="grado">Grado:</label>
-                    <input name="grado"  id="grados" tabindex="3" placeholder= "General"disabled>
+                    <input name="grado"  id="grados" tabindex="3" placeholder= "General"disabled value="<%=ObjDtoAsig.getDescripcionGrado()%>">
 
                     <label for="campoApellido1">Primer Apellido:</label>
-                    <input name="apellido1" id="campoApellido1" type="text" placeholder="Ej. Medina" tabindex="9" required minlength="3" maxlength="10" disabled>
+                    <input name="apellido1" id="campoApellido1" type="text" placeholder="Ej. Medina" tabindex="9" required minlength="3" maxlength="10" disabled value="<%=ObjDtoAsig.getApellido1()%>">
 
                     <label for="campoApellido2">Segundo Apellido:</label>
-                    <input name="apellido2" id="campoApellido2" type="text" placeholder="Ej. Tarazona" tabindex="10" maxlength="10" disabled>
+                    <input name="apellido2" id="campoApellido2" type="text" placeholder="Ej. Tarazona" tabindex="10" maxlength="10" disabled value="<%=ObjDtoAsig.getApellido2()%>">
 
                     <label for="campoNombre1">Primer Nombre:</label>
-                    <input name="nombre1" id="campoNombre1" type="text" placeholder="Ej. Jairo" tabindex="11" required maxlength="10" disabled>
+                    <input name="nombre1" id="campoNombre1" type="text" placeholder="Ej. Jairo" tabindex="11" required maxlength="10" disabled value="<%=ObjDtoAsig.getNombre1()%>">
 
                     <label for="campoNombre2">Segundo Nombre:</label>
-                    <input name="nombre2" id="campoNombre2" type="text" placeholder="Ej. Ismael" tabindex="12" maxlength="10" disabled>
+                    <input name="nombre2" id="campoNombre2" type="text" placeholder="Ej. Ismael" tabindex="12" maxlength="10" disabled value="<%=ObjDtoAsig.getNombre2()%>">
                 </div>
 
                 <div class="cajas" id="cajaTres">
 
                     <label for="licenciaConduccion">Licencia de conducción:</label>
-                    <input name="licenciaConduccion" id="licenciaConduccion" type="text" placeholder= "Ej. 1100100096612385" tabindex="15" required minlength="8" maxlength="17" disabled>
+                    <input name="licenciaConduccion" id="licenciaConduccion" type="text" placeholder= "Ej. 1100100096612385" tabindex="15" required minlength="8" maxlength="17" disabled value="<%=ObjDtoAsig.getLicenciaConduccion()%>">
 
                     <label for="categoria">Categoría:</label>
-                    <input name="categoria" id="categoria" type="text" placeholder= "Ej. C1" tabindex="16" required disabled>
+                    <input name="categoria" id="categoria" type="text" placeholder= "Ej. C1" tabindex="16" required disabled value="<%=ObjDtoAsig.getDescripcionCategoria()%>">
                     <br> 
 
                     <label for="vencimientoCategoria">Fecha Vencimiento</label>
-                    <input name="vencimientoCategoria" class="fechas" id="vencimientoCategoria" type="date" tabindex="17" required maxlength="10" disabled>
+                    <input name="vencimientoCategoria" class="fechas" id="vencimientoCategoria" type="date" tabindex="17" required maxlength="10" disabled value="<%=ObjDtoAsig.getVencimientoLicencia()%>">
 
                     <label for="fechaAsignacion">Fecha Asignación</label>
-                    <input name="fechaAsignacion" class="fechas" id="fechaAsignacion" type="date" tabindex="13" required maxlength="10">
+                    <input name="fechaAsignacion" class="fechas" id="fechaAsignacion" type="date" tabindex="13" required maxlength="10" value="<%=ObjDtoAsig.getFechaAsignacion()%>">
 
                     <label for="fechaDesasignacion">Fecha DesAsignacíon</label>
-                    <input name="fechaDesasignacion" class="fechas" id="fechaDesasignacion" type="date" tabindex="14" required maxlength="10">
+                    <input name="fechaDesasignacion" class="fechas" id="fechaDesasignacion" type="date" tabindex="14" required maxlength="10" value="<%=ObjDtoAsig.getFechaDesasignacion()%>">
 
                     <label for="novedadesVehiculo">Novedades Vehículo:</label>
-                    <input name="novedadesVehiculo" id="novedadesVehiculo" type="text" placeholder="Sin Novedad especial" tabindex="14" required="">
+                    <input name="novedadesVehiculo" id="novedadesVehiculo" type="text" placeholder="Sin Novedad especial" tabindex="14" required="" value="<%=ObjDtoAsig.getNovedadesVehiculos()%>">
 
                     <br>
                     <input class="btn btn-primary" type="submit" name="enviar" value="Guardar" >
