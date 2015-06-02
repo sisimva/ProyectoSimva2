@@ -9,6 +9,7 @@ import DAO.FuncionarioDao;
 import DAO.LoginDao;
 import DTO.FuncionarioRolDto;
 import DTO.FuncionariosDto;
+import Modelo.Mailer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -97,7 +98,7 @@ public class GestionLogin extends HttpServlet {
                     response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=2");                                    
                 }else{
                 String Mensaje = "El sistema Simva le recuerda su nombre de usuario = "+Usuario+"  con la clave correspondiente = "+Clave;
-                    //Mailer.send(Correo, "Nueva Contrasena", Mensaje);
+                    Mailer.send(Correo, "Nueva Contrasena", Mensaje);
                     response.sendRedirect("/ProyectoSimva/spanish/recuperar.jsp?mensaje=3&correo="+Correo);                     
                 }           
             }
