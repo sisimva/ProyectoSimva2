@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author andres
@@ -35,9 +36,9 @@ public class Mantenimiento1DAO {
             stmt.setInt(1, mantenimiento.getIdMantenimientos());
             stmt.setString(2, mantenimiento.getPlaca());
             stmt.setInt(3, mantenimiento.getIdTipoMantenimiento());
-            stmt.setString(4, mantenimiento.getFechaIngresoMantenimiento());
-            stmt.setString(5, mantenimiento.getFechaSalidaMantenimiento());
-            stmt.setString(6, mantenimiento.getFechaProximoMantenimiento());
+            stmt.setDate(4, mantenimiento.getFechaIngresoMantenimiento());
+            stmt.setDate(5, mantenimiento.getFechaSalidaMantenimiento());
+            stmt.setDate(6, mantenimiento.getFechaProximoMantenimiento());
             stmt.setString(7, mantenimiento.getObservaciones());
             stmt.setInt(8, mantenimiento.getCcMantenimiento());
             
@@ -96,9 +97,9 @@ public class Mantenimiento1DAO {
                 newMantenimiento.setIdMantenimientos(rs.getInt("idMantenimiento"));
                 newMantenimiento.setPlaca(rs.getString("placa"));
                 newMantenimiento.setIdTipoMantenimiento(rs.getInt("estado"));
-                newMantenimiento.setFechaIngresoMantenimiento(rs.getString("campoFechaI"));
-                newMantenimiento.setFechaSalidaMantenimiento(rs.getString("FechaF"));
-                newMantenimiento.setFechaProximoMantenimiento(rs.getString("campoFechaP"));
+                newMantenimiento.setFechaIngresoMantenimiento(rs.getDate("campoFechaI"));
+                newMantenimiento.setFechaSalidaMantenimiento(rs.getDate("FechaF"));
+                newMantenimiento.setFechaProximoMantenimiento(rs.getDate("campoFechaP"));
                 newMantenimiento.setObservaciones(rs.getString("observaciones"));
                 listado.add(newMantenimiento);
             }
@@ -116,8 +117,8 @@ public class Mantenimiento1DAO {
             try 
         {
             stmt = con.prepareStatement("select * from mantenimientos where fechaIngresoMantenimiento between ? and ?; ");
-            stmt.setDate(1, fecha1);
-            stmt.setDate(2, fecha2);
+            stmt.setDate(1,new java.sql.Date(fecha1.getDate()));
+            stmt.setDate(2,new java.sql.Date(fecha2.getDate()));
             rs = stmt.executeQuery();
             
             while (rs.next())
@@ -128,9 +129,9 @@ public class Mantenimiento1DAO {
                 newMantenimiento.setIdMantenimientos(rs.getInt("idMantenimiento"));
                 newMantenimiento.setPlaca(rs.getString("placa"));
                 newMantenimiento.setIdTipoMantenimiento(rs.getInt("estado"));
-                newMantenimiento.setFechaIngresoMantenimiento(rs.getString("campoFechaI"));
-                newMantenimiento.setFechaSalidaMantenimiento(rs.getString("FechaF"));
-                newMantenimiento.setFechaProximoMantenimiento(rs.getString("campoFechaP"));
+                newMantenimiento.setFechaIngresoMantenimiento(rs.getDate("campoFechaI"));
+                newMantenimiento.setFechaSalidaMantenimiento(rs.getDate("FechaF"));
+                newMantenimiento.setFechaProximoMantenimiento(rs.getDate("campoFechaP"));
                 newMantenimiento.setObservaciones(rs.getString("observaciones"));
                 listado.add(newMantenimiento);
             }
@@ -170,9 +171,9 @@ public class Mantenimiento1DAO {
 
             stmt.setString(1, man.getPlaca());
             stmt.setInt(2, man.getIdTipoMantenimiento());
-            stmt.setString(3, man.getFechaIngresoMantenimiento());
-            stmt.setString(4, man.getFechaSalidaMantenimiento());
-            stmt.setString(5, man.getFechaProximoMantenimiento());
+            stmt.setDate(3, man.getFechaIngresoMantenimiento());
+            stmt.setDate(4, man.getFechaSalidaMantenimiento());
+            stmt.setDate(5, man.getFechaProximoMantenimiento());
             stmt.setString(6, man.getObservaciones());
             stmt.setInt(7, man.getCcMantenimiento());
             stmt.setInt(8, man.getIdMantenimientos());

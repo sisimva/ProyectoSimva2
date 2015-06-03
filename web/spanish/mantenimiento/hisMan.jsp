@@ -93,11 +93,16 @@
 
             <div id="area">
 
-
+                   
 
 
                 <%
-
+                   
+                       MantenimientosDto ObjDto = new MantenimientosDto();
+                       
+                   
+                   if(request.getParameter("fechaInicio")!=null){ 
+                    
                     ArrayList<MantenimientosDto> listado = (ArrayList<MantenimientosDto>) request.getSession().getAttribute("mantenimientos");
 
                 %>
@@ -132,7 +137,7 @@
                                     out.print("<td><link href='../../EliminarMantenimiento?mantenimientoId='" + mantenimiento.getIdMantenimientos() + ">Eliminar</link></td>");
                                     out.print("<td><link href='../../ActualizarMantenimiento?mantenimientoId='" + mantenimiento.getIdMantenimientos() + ">Actualizar</link></td>");
                                 }
-
+                   }
                             %>
 
                         </tr>
@@ -149,7 +154,7 @@
                     <br>
 
                     <div id="nuevo">
-                        <button class="btn btn-primary" type="submit" tabindex="12">Nuevo</button>
+                        <button class="btn btn-primary" type="submit" name="btn" value="nuevo" tabindex="12">Nuevo</button>
                     </div>
                     <br>
                     <div id="salir">

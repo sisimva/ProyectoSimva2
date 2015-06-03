@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import java.sql.Date;
+
 /**
  *
  * @author andres
@@ -13,9 +15,9 @@ public class MantenimientosDto {
     private int idMantenimientos;
     private String placa;
     private int idTipoMantenimiento;
-    private String fechaIngresoMantenimiento;
-    private String fechaSalidaMantenimiento;
-    private String fechaProximoMantenimiento;
+    private Date fechaIngresoMantenimiento;
+    private Date fechaSalidaMantenimiento;
+    private Date fechaProximoMantenimiento;
     private String observaciones;
     private int CcMantenimiento;
 
@@ -32,7 +34,7 @@ public class MantenimientosDto {
     
     
 
-    public MantenimientosDto(int idMantenimientos, String placa, int idTipoMantenimiento, String fechaIngresoMantenimiento, String fechaSalidaMantenimiento, String fechaProximoMantenimiento, String observaciones, int CcMantenimiento) {
+    public MantenimientosDto(int idMantenimientos, String placa, int idTipoMantenimiento, Date fechaIngresoMantenimiento, Date fechaSalidaMantenimiento, Date fechaProximoMantenimiento, String observaciones, int CcMantenimiento) {
         this.idMantenimientos = idMantenimientos;
         this.placa = placa;
         this.idTipoMantenimiento = idTipoMantenimiento;
@@ -67,27 +69,27 @@ public class MantenimientosDto {
         this.idTipoMantenimiento = idTipoMantenimiento;
     }
 
-    public String getFechaIngresoMantenimiento() {
+    public Date getFechaIngresoMantenimiento() {
         return fechaIngresoMantenimiento;
     }
 
-    public void setFechaIngresoMantenimiento(String fechaIngresoMantenimiento) {
+    public void setFechaIngresoMantenimiento(Date fechaIngresoMantenimiento) {
         this.fechaIngresoMantenimiento = fechaIngresoMantenimiento;
     }
 
-    public String getFechaSalidaMantenimiento() {
+    public Date getFechaSalidaMantenimiento() {
         return fechaSalidaMantenimiento;
     }
 
-    public void setFechaSalidaMantenimiento(String fechaSalidaMantenimiento) {
+    public void setFechaSalidaMantenimiento(Date fechaSalidaMantenimiento) {
         this.fechaSalidaMantenimiento = fechaSalidaMantenimiento;
     }
 
-    public String getFechaProximoMantenimiento() {
+    public Date getFechaProximoMantenimiento() {
         return fechaProximoMantenimiento;
     }
 
-    public void setFechaProximoMantenimiento(String fechaProximoMantenimiento) {
+    public void setFechaProximoMantenimiento(Date fechaProximoMantenimiento) {
         this.fechaProximoMantenimiento = fechaProximoMantenimiento;
     }
 

@@ -106,9 +106,6 @@
                 
             </section>
      
-
-            </div>
-        </section> 
   
     </body>
         <!-- InstanceEndEditable -->
