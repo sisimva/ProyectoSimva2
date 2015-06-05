@@ -181,8 +181,7 @@
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <img src="../img/funcionario123.jpg" alt="foto" width="120" height="100">
                     </div>
-                <!--    <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">-->
-                    <br>
+                     <br>
                     <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
                 </div>
 
@@ -190,7 +189,7 @@
                     if (request.getParameter("funci") != null) {
                         out.print("<h2>" + request.getParameter("funci") + "</h2>");
                     }
-                %>
+            %>
             </form>
     </section>
 </section>

@@ -66,7 +66,7 @@ public class FuncionariosDao {
         return rta;
     }
 
-    public FuncionariosDto ConsultarFuncionario(int cedula) {
+    public FuncionariosDto ConsultarFuncionario(int cedula) throws miExcepcion, SQLException {
         String rta = "";
         FuncionariosDto unFuncionario = new FuncionariosDto();
         try {
@@ -82,7 +82,9 @@ public class FuncionariosDao {
                     + "WHERE numeroDocumento = ?;");
             stmt.setInt(1, cedula);
             rs = stmt.executeQuery();
-            while (rs.next()) {
+
+            if (rs != null) {
+                rs.next();
                 unFuncionario.setNumeroDocumento(rs.getInt("f.numeroDocumento"));
                 unFuncionario.setIdCiudad(rs.getInt("idCiudad"));
                 unFuncionario.setNombreCiudad(rs.getString("c.nombreCiudad"));
@@ -105,18 +107,25 @@ public class FuncionariosDao {
                 unFuncionario.setFechaAlta(rs.getString("f.fechaAlta"));
                 unFuncionario.setEmail(rs.getString("f.eMail"));
                 unFuncionario.setfotoFuncionario(rs.getString("f.fotoFuncionario"));
-            } 
+            } else {
+                rta = "Funcionario No existe";
+                System.out.println("Funcionario No existe");
+                
+            }
         } catch (SQLException sqle) {
-            rta = sqle.getMessage();
-        }/* finally {
-         if (con != null) {
-         try {
-         con.close();
-         } catch (SQLException e) {
-         e.printStackTrace();
-         }
-         }
-         }*/
+            //rta = sqle.getMessage();
+             throw new miExcepcion();
+           
+        } /*finally {
+            try {
+                stmt.close();
+                con.close();
+                rs.close();
+            } catch (SQLException e) {
+
+            }
+
+        }*/
 
         return unFuncionario;
 

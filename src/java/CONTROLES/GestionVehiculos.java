@@ -76,8 +76,6 @@ public class GestionVehiculos extends HttpServlet {
 
                 //   Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
                 //response.sendRedirect("/ProyectoSimva/spanish/asignacion/listadoFuncionarios.jsp?funci="+funci);
-            }else if ((request.getParameter("enviar").equals("Consultar Otro"))) {
-                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaVehiculo.jsp?funci=" + Vehi);
             } else if ((request.getParameter("enviar").equals("Actualizar"))) {
                  ObjDtoVehi.setPlaca(request.getParameter("placa"));
                 ObjDtoVehi.setIdTiposVehiculo(Integer.parseInt(request.getParameter("tipoVehiculo")));

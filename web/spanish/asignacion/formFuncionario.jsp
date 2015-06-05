@@ -51,10 +51,10 @@
 
     <nav>
         <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de vehÃ­culos"><span class="fa fa-car fa-1x"> Registro de vehículos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaciÃ³n"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
-        <a href="../index-es.html" title="Cerrar secciÃ³n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="formConsultaVehiculos.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
+        <a href="formConsultaAsignacion.jsp" title="Consulta de asignación"><span class="fa fa-check-square-o fa-1x"> Consulta de asignación</a>
+        <a href="../index-es.jsp" title="Cerrar sección"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
 
@@ -263,7 +263,7 @@
                         email: true
                     },
                     fechaAlta: {
-                       idRh
+                        required: true,
                     },
                     idRh:{
                         required: true

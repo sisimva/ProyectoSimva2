@@ -95,10 +95,15 @@
     <!-- InstanceBeginEditable name="Body" -->
     <body>
         <%
-           // HttpSession miSession = request.getSession();
-           // FuncionariosDto ObjDtoFunci = new FuncionariosDto();
-            //ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
+           HttpSession miSession = request.getSession();
+            FuncionariosDto ObjDtoFunci = new FuncionariosDto();
+           ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
         %>  
+        
+        <%
+         //  miSession.removeAttribute("ObjFunci");
+        
+        %>
     <section>
         <div id="area">
             <div id="miga">

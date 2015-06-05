@@ -70,7 +70,7 @@
             AsignacionesDto ObjDtoAsig = new AsignacionesDto();
             ObjDtoAsig = (AsignacionesDto) miSession.getAttribute("ObjAsig");
         %>
-        
+
     <section>
         <div id="area">
             <div id="miga">
@@ -91,7 +91,7 @@
                     </div>
                     <br>
                     <label for="placa">Placa:</label>
-                    <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8" disabled value="<%=ObjDtoAsig.getPlaca() %>"> 
+                    <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8" disabled value="<%=ObjDtoAsig.getPlaca()%>"> 
 
                     <label for="sigla">Sigla:</label>
                     <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="3" minlength="5" maxlength="12" disabled value="<%=ObjDtoAsig.getSigla()%>">
@@ -104,7 +104,7 @@
                     <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled value="<%=ObjDtoAsig.getDescripcionMarcaVehiculo()%>">
 
                     <label for="cilindraje">Cilindraje:</label>
-                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled value="<%=ObjDtoAsig.getCilindraje() %>">
+                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled value="<%=ObjDtoAsig.getCilindraje()%>">
 
                     <label for="empleoVehiculo">Empleo:</label>
                     <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="" value="<%=ObjDtoAsig.getDescripcionEmpleoVehiculo()%>">
@@ -156,7 +156,7 @@
                     <input name="novedadesVehiculo" id="novedadesVehiculo" type="text" placeholder="Sin Novedad especial" tabindex="14" required="" value="<%=ObjDtoAsig.getNovedadesVehiculos()%>">
 
                     <br>
-                    <input class="btn btn-primary" type="submit" name="enviar" value="Guardar" >
+                    <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
                 </div>
             </form>
 

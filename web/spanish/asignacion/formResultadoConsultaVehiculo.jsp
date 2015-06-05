@@ -209,8 +209,6 @@
                     <label for="fechaEstado">Fecha del Estado</label>
                     <input name="fechaEstado" class="fechas" id="fechaEstado" type="date" tabindex="21" required value="<%=ObjDtoVehi.getFechaEstado()%>">
                     <br>
-
-                    <input class="btn btn-primary" type="submit" name="enviar" value="Consultar Otro">
                     <br>
                     <input class="btn btn-primary" type="submit" name="enviar" value="Actualizar" >
                     <%
