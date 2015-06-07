@@ -48,7 +48,7 @@ public class FuncionariosDao {
                 rta = "Fallo el ingreso del funcionario";
                 System.out.println("Fallo el ingreso del funcionario");
             } else {
-                rta = "Funcionario insertado exitosamente";
+                rta = "Funcionario insertado exitosamente.  XXXXXXX";
                 System.out.println("Funcionario insertado exitosamente");
             }
         } catch (SQLException sqle) {
@@ -82,9 +82,7 @@ public class FuncionariosDao {
                     + "WHERE numeroDocumento = ?;");
             stmt.setInt(1, cedula);
             rs = stmt.executeQuery();
-
-            if (rs != null) {
-                rs.next();
+            if (rs.next()) {
                 unFuncionario.setNumeroDocumento(rs.getInt("f.numeroDocumento"));
                 unFuncionario.setIdCiudad(rs.getInt("idCiudad"));
                 unFuncionario.setNombreCiudad(rs.getString("c.nombreCiudad"));
@@ -110,22 +108,21 @@ public class FuncionariosDao {
             } else {
                 rta = "Funcionario No existe";
                 System.out.println("Funcionario No existe");
-                
-            }
+          }
         } catch (SQLException sqle) {
-            //rta = sqle.getMessage();
-             throw new miExcepcion();
-           
+            rta = sqle.getMessage();
+            throw new miExcepcion();
+
         } /*finally {
-            try {
-                stmt.close();
-                con.close();
-                rs.close();
-            } catch (SQLException e) {
+         try {
+         stmt.close();
+         con.close();
+         rs.close();
+         } catch (SQLException e) {
 
-            }
+         }
 
-        }*/
+         }*/
 
         return unFuncionario;
 

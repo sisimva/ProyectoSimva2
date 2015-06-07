@@ -75,18 +75,26 @@
 
             <form class="formularioConsultaFuncionario" method="post" action="../../formFuncionario">
                 <h3>Respuesta Consulta de Funcionario</h3>
-                  <%
-                if (request.getParameter("funci") != null) {
-                    out.print("<h2>" + request.getParameter("funci") + "</h2>");
-                }
-            %>
-                
-                
-                <!-- <input class="btn btn-primary" type="submit" id="ingresarFuncionario" name="enviar" value="Registrar Funcionario" > -->
-                 <a href="formFuncionario.jsp"><span class="bottom"  ></span>Registrar Funcionario</a>
-               
+                <%
+               //     if (request.getParameter("funci") != null) {
+                  //      out.print("<h2>" + request.getParameter("funci") + "</h2>");
+                   // }
+                %>
+                <%
+                    boolean mensaje= Boolean.parseBoolean(request.getParameter("funci")) ;
+                    
+                    if(mensaje ==false){
+                    out.print("<script>"
+                            + "alert('usuario no existe');"
+                          //  + "window.location.href =' formFuncionario.jsp';"
+                            + " </script>");
+                   }
+                %>
+            <!-- <input class="btn btn-primary" type="submit" id="ingresarFuncionario" name="enviar" value="Registrar Funcionario" > -->
+                <a href="formFuncionario.jsp"><span class="bottom"  ></span>Registrar Funcionario</a>
+
             </form>
-             
+
     </section>
 </body>
 

@@ -38,6 +38,7 @@ public class GestionFuncionarios extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String funci = "";
+            String rta="";
             HttpSession miSession = request.getSession();
             FuncionariosDto ObjDtoFunci = new FuncionariosDto();
             FuncionariosDao ObjDaoFunci = new FuncionariosDao();
@@ -67,18 +68,20 @@ public class GestionFuncionarios extends HttpServlet {
             } else if ((request.getParameter("enviar").equals("Consultar"))) {
                 try {
                     ObjDtoFunci = ObjDaoFunci.ConsultarFuncionario(Integer.parseInt(request.getParameter("numeroDocumento")));
-                        if (ObjDtoFunci != null) {
+                    if (ObjDtoFunci.getNumeroDocumento() != 0) {
                         miSession.setAttribute("ObjFunci", ObjDtoFunci);
                         miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
                         response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaFuncionario.jsp?funci=" + funci);
                     } else {
-                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + funci);
-                        
+                        //request.setAttribute("mensaje", rta);
+                         boolean mensaje= false;
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + mensaje);
                     }
                 } catch (Exception miExcepcion) {
-                   // funci = "Este funcionario no ha sido registrado en la base de datos.  Para registrarlo de clic en el botón";
-                    //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
-                    // response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + funci);
+                    funci = "Este funcionario no ha sido registrado en la base de datos.  Para registrarlo de clic en el botón";
+                
+                    // response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
+                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=");
 
                 }
                 //else {
