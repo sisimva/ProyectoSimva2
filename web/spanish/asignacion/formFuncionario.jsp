@@ -63,6 +63,7 @@
     <body>
 <%
     HttpSession miSession = request.getSession();
+  
 %>
         
         <section>
@@ -78,7 +79,7 @@
                     <h3>Formulario Registro de Funcionario</h3>
                     <div class="cajas" id="cajaUno">  
                         <label for="numeroDocumento">Cedula:</label>
-                        <input name="numeroDocumento" id="numeroDocumento" type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10">
+                        <input name="numeroDocumento" id="numeroDocumento" type="text"  placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="<%=miSession.getAttribute("Cedula")  %>">
                         <br>
                         <label for="grado">Grado:</label>
                         <Select name="grado" class="listas" id="grados" tabindex="3" required>

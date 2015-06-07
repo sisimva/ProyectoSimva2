@@ -3,7 +3,6 @@
     Created on : 18-Abr-2015, 19:24:41
     @author Jairo Medina
 --%>
-
 <%@page import="DAO.FuncionariosDao"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DTO.FuncionariosDto"%>
@@ -77,33 +76,25 @@
                 return patron.test(te); // prueba
             }
         </script>
-
     </header>
     <div id="espacio1"></div>
     <!-- InstanceBeginEditable name="nav" -->
-
     <nav>
         <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="formConsultaVehiculo.jsp" title="Consulta de vehículos"><span class="fa fa-car fa-1x"> Consulta de vehículos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignación"><span class="fa fa-check-square-o fa-1x"> Realizar asignación</a>
+        <a href="formConsultaAsignacion.jsp" title="Consulta de asignación"><span class="fa fa-check-square-o fa-1x"> Consulta de asignación</a>
         <a href="../index-es.jsp" title="Cerrar sesión"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
-
     <div id="espacio2"></div>
     <!-- InstanceBeginEditable name="Body" -->
     <body>
         <%
-           HttpSession miSession = request.getSession();
+            HttpSession miSession = request.getSession();
             FuncionariosDto ObjDtoFunci = new FuncionariosDto();
-           ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
+            ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
         %>  
-        
-        <%
-         //  miSession.removeAttribute("ObjFunci");
-        
-        %>
     <section>
         <div id="area">
             <div id="miga">
@@ -113,18 +104,13 @@
                     <li class="active">Formulario Consulta de Funcionario</li>   
                 </ol>
             </div>
-
             <form class="formularioConsultaFuncionario" method="post" action="../../GestionFuncionarios">
                 <h3>Formulario Consulta de Funcionario</h3>
-
-                <div class="cajas" id="cajaUno">  
-                    <label for="numeroDocumento">Digite el Número de Cédula:</label>
-                    <input name="numeroDocumento" id="numeroDocumento" class="inputad"  type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="" onkeydown="return validarNumeros(event)"><br><br>
-                    <input class="btn btn-primary" type="submit" id="buscarDocumento" name="enviar" value="Consultar" onclick="return confirmation()"  >
-                    <input type="hidden" name="numeros" onkeydown="return validarNumeros(event)"/>
-              <!--       <script type="text/javascript"> alert("Funcionario no existe")</script>  -->
-                    <br>
-                </div>
+                <br> <br> <br>
+                <label for="numeroDocumento">Digite el Número de Cédula:</label>
+                <input name="numeroDocumento" id="numeroDocumento" class="inputad"  type="text" placeholder= "Ej. 79'399.894" tabindex="1" required maxlength="10" value="" onkeydown="return validarNumeros(event)"><br><br><br>
+                <center> <input class="btn btn-primary" type="submit" id="buscarDocumento" name="enviar" value="Consultar" onclick="return confirmation()"  ></center>
+                <input type="hidden" name="numeros" onkeydown="return validarNumeros(event)"/>
             </form>
             <%
                 if (request.getParameter("funci") != null) {

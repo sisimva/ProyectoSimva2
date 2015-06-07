@@ -38,7 +38,7 @@ public class GestionFuncionarios extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String funci = "";
-            String rta="";
+            String rta = "";
             HttpSession miSession = request.getSession();
             FuncionariosDto ObjDtoFunci = new FuncionariosDto();
             FuncionariosDao ObjDaoFunci = new FuncionariosDao();
@@ -73,27 +73,19 @@ public class GestionFuncionarios extends HttpServlet {
                         miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
                         response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaFuncionario.jsp?funci=" + funci);
                     } else {
-                        //request.setAttribute("mensaje", rta);
-                         boolean mensaje= false;
-                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + mensaje);
+                        boolean mensaje = false;
+                        miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
+                        funci = "Para registrar un nuevo funcionario en la base de datos de clic en el botón";
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + funci);
                     }
                 } catch (Exception miExcepcion) {
-                    funci = "Este funcionario no ha sido registrado en la base de datos.  Para registrarlo de clic en el botón";
-                
-                    // response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
-                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=");
-
                 }
-                //else {
-                // response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp");
-                //RequestDispatcher Rd = request.getRequestDispatcher("/ProyectoSimva/spanish/asignacion/formConsultaFuncionario.jsp?funci=" + funci);
-                //   Rd = getServletContext().getRequestDispatcher("/index.jsp?mensaje=1");
-                // Rd.forward(request, response);
-                //}
                 /*else if (request.getParameter("enviar").equals("Eliminar"))
                  {
                  int Pos = Integer.parseInt(request.getParameter("pos"));
                  Funci = ObjDaoFunci.Eliminar(Pos);*/
+            } else if ((request.getParameter("enviar").equals("Registrar"))) {
+                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionario.jsp");
             } else if ((request.getParameter("enviar").equals("Actualizar"))) {
                 ObjDtoFunci.setNumeroDocumento(Integer.parseInt(request.getParameter("numeroDocumento")));
                 ObjDtoFunci.setIdCiudad(Integer.parseInt(request.getParameter("ciudadDocumento")));

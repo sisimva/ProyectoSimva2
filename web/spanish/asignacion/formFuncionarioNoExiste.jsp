@@ -1,7 +1,7 @@
 <%-- 
     Document   : formFuncionarioNoExiste
     Created on : 02-jun-2015, 18:23:30
-    Author     : Jairo 
+    Author     : Jairo Medina
 --%>
 
 <%@page import="DAO.FuncionariosDao"%>
@@ -73,28 +73,25 @@
                 </ol>
             </div>
 
-            <form class="formularioConsultaFuncionario" method="post" action="../../formFuncionario">
+            <form class="formularioConsultaFuncionario" method="post" action="../../GestionFuncionarios">
                 <h3>Respuesta Consulta de Funcionario</h3>
+                 <br><br>
                 <%
-               //     if (request.getParameter("funci") != null) {
-                  //      out.print("<h2>" + request.getParameter("funci") + "</h2>");
-                   // }
+                    if (request.getParameter("funci") != null) {
+                        out.print("<h2>" + request.getParameter("funci") + "</h2>");
+                    }
                 %>
+               
                 <%
-                    boolean mensaje= Boolean.parseBoolean(request.getParameter("funci")) ;
-                    
-                    if(mensaje ==false){
-                    out.print("<script>"
-                            + "alert('usuario no existe');"
-                          //  + "window.location.href =' formFuncionario.jsp';"
-                            + " </script>");
-                   }
+                    boolean mensaje = Boolean.parseBoolean(request.getParameter("funci"));
+                    if (mensaje == false) {
+                        out.print("<script>"+ "alert('Funcionario no existe en la Base de Datos');"
+                                //  + "window.location.href =' formFuncionario.jsp';"// Redirecciona para ingresar funcionario
+                                + " </script>");
+                    }
                 %>
-            <!-- <input class="btn btn-primary" type="submit" id="ingresarFuncionario" name="enviar" value="Registrar Funcionario" > -->
-                <a href="formFuncionario.jsp"><span class="bottom"  ></span>Registrar Funcionario</a>
-
+                <input class="btn btn-primary" type="submit" id="ingresarFuncionario" name="enviar" value="Registrar" >
             </form>
-
     </section>
 </body>
 

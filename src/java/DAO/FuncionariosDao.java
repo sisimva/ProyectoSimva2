@@ -48,7 +48,7 @@ public class FuncionariosDao {
                 rta = "Fallo el ingreso del funcionario";
                 System.out.println("Fallo el ingreso del funcionario");
             } else {
-                rta = "Funcionario insertado exitosamente.  XXXXXXX";
+                rta = "Funcionario insertado exitosamente";
                 System.out.println("Funcionario insertado exitosamente");
             }
         } catch (SQLException sqle) {
@@ -105,10 +105,10 @@ public class FuncionariosDao {
                 unFuncionario.setFechaAlta(rs.getString("f.fechaAlta"));
                 unFuncionario.setEmail(rs.getString("f.eMail"));
                 unFuncionario.setfotoFuncionario(rs.getString("f.fotoFuncionario"));
-            } else {
-                rta = "Funcionario No existe";
+            } /*else {
+               rta = "Funcionario No existe";
                 System.out.println("Funcionario No existe");
-          }
+          }*/
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
             throw new miExcepcion();
