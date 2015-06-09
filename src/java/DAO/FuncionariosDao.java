@@ -106,9 +106,10 @@ public class FuncionariosDao {
                 unFuncionario.setEmail(rs.getString("f.eMail"));
                 unFuncionario.setfotoFuncionario(rs.getString("f.fotoFuncionario"));
             } /*else {
-               rta = "Funcionario No existe";
-                System.out.println("Funcionario No existe");
-          }*/
+             rta = "Funcionario No existe";
+             System.out.println("Funcionario No existe");
+             }*/
+
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
             throw new miExcepcion();
@@ -159,7 +160,7 @@ public class FuncionariosDao {
                 rta = "Fallo al actualizar el funcionario";
                 //System.out.println("Fallo al actualizar el funcionario");
             } else {
-                rta = "Funcionario actualizado exitosamente";
+                rta = "Registro de Funcionario actualizado exitosamente.";
                 //System.out.println("Funcionario actualizado exitosamente");
             }
         } catch (SQLException sqle) {

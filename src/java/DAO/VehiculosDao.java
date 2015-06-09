@@ -77,7 +77,7 @@ public class VehiculosDao {
         return rta;
     }
 
-    public VehiculosDto ConsultarVehiculo(String placa) {
+    public VehiculosDto ConsultarVehiculo(String placa) throws miExcepcion, SQLException {
         String rta = "";
         VehiculosDto unVehiculo = new VehiculosDto();
         try {
@@ -96,7 +96,7 @@ public class VehiculosDao {
                     + "WHERE placa=?;");
             stmt.setString(1, placa);
             rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 unVehiculo.setPlaca(rs.getString("placa"));
                 unVehiculo.setIdTiposVehiculo(rs.getInt("v.idTiposVehiculo"));
                 unVehiculo.setDescripcionTipoVehiculo(rs.getString("tV.descripcionTipoVehiculo"));
@@ -124,9 +124,13 @@ public class VehiculosDao {
                 unVehiculo.setRevisionTecnomecanica(rs.getInt("v.revisionTecnomecanica"));
                 unVehiculo.setVencimientoTecnomecanica(rs.getString("v.vencimientoTecnomecanica"));
                 unVehiculo.setFotoVehiculo(rs.getString("v.fotoVehiculo"));
+            }else{
+            rta = "Vehículo NO EXISTE";
+            System.out.println("Vehículo NO EXISTE");
             }
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
+            throw new miExcepcion();
         }/* finally {
          if (con != null) {
          try {
@@ -209,12 +213,12 @@ public class VehiculosDao {
             stmt.setString(21, actuVehi.getPlaca());
             resultado = stmt.executeUpdate();
             if (resultado == 0) {
-               rta = "Fallo al actualizar información del vehículo";
+                rta = "Fallo al actualizar información del vehículo";
             } else {
-                rta ="Registro actualizado exitosamente";
-            } 
-        } catch (SQLException sqle) { 
-            rta=sqle.getMessage();
+                rta = "Registro de Vehiculo actualizado exitosamente.";
+            }
+        } catch (SQLException sqle) {
+            rta = sqle.getMessage();
         } /*finally {
          if (con != null) {
          try {
@@ -224,6 +228,7 @@ public class VehiculosDao {
          }
          }
          }*/
-        return rta; 
-            }
+
+        return rta;
+    }
 }

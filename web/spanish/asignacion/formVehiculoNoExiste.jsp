@@ -1,19 +1,17 @@
 <%-- 
-    Document   : formFuncionarioNoExiste
-    Created on : 02-jun-2015, 18:23:30
+    Document   : formVehiculoNoExiste
+    Created on : 08-jun-2015, 9:36:35
     Author     : Jairo Medina
 --%>
-
-<%@page import="DAO.FuncionariosDao"%>
+<%@page import="DTO.VehiculosDto"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="DTO.FuncionariosDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
     <head>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- InstanceBeginEditable name="doctitle" -->
-        <title>Funcionario No Existe</title>
+        <title>Vehiculo No Existe</title>
         <!-- InstanceEndEditable -->
         <!-- InstanceBeginEditable name="head" -->
         <link type="text/css" rel="stylesheet" href="../css/estilos.css">
@@ -62,8 +60,8 @@
     <body>
         <%
             HttpSession miSession = request.getSession();
-            FuncionariosDto ObjDtoFunci = new FuncionariosDto();
-            ObjDtoFunci = (FuncionariosDto) miSession.getAttribute("ObjFunci");
+            VehiculosDto ObjDtoVehi = new VehiculosDto();
+            ObjDtoVehi = (VehiculosDto) miSession.getAttribute("ObjVehi");
         %>  
     <section>
         <div id="area">
@@ -71,28 +69,28 @@
                 <br>
                 <ol class="breadcrumb">
                     <li><a href="../Asignacion.jsp">Inicio</a></li>
-                    <li class="active">Respuesta Consulta de Funcionario</li>   
+                    <li class="active">Respuesta Consulta de Vehículo</li>   
                 </ol>
             </div>
 
-            <form class="formularioConsultaFuncionario" method="post" action="../../GestionFuncionarios">
-                <h3>Respuesta Consulta de Funcionario</h3>
+            <form class="formularioConsultaFuncionario" method="post" action="../../GestionVehiculos">
+                <h3>Respuesta Consulta de Vehículo</h3>
                  <br><br>
                 <%
-                    if (request.getParameter("funci") != null) {
-                        out.print("<h2>" + request.getParameter("funci") + "</h2>");
+                    if (request.getParameter("Vehi") != null) {
+                        out.print("<h2>" + request.getParameter("Vehi") + "</h2>");
                     }
                 %>
                
                 <%
-                    boolean mensaje = Boolean.parseBoolean(request.getParameter("funci"));
+                    boolean mensaje = Boolean.parseBoolean(request.getParameter("Vehi"));
                     if (mensaje == false) {
-                        out.print("<script>"+ "alert('Funcionario no existe en la Base de Datos');"
+                        out.print("<script>"+ "alert('Vehículo no existe en la Base de Datos');"
                                 //  + "window.location.href =' formFuncionario.jsp';"// Redirecciona para ingresar funcionario
                                 + " </script>");
                     }
                 %>
-                <input class="btn btn-primary" type="submit" id="ingresarFuncionario" name="enviar" value="Registrar" >
+                <input class="btn btn-primary" type="submit" id="ingresarVehiculo" name="enviar" value="Registrar" >
             </form>
     </section>
 </body>

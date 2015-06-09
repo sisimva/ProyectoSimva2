@@ -1,7 +1,7 @@
 <%-- 
     Document   : formVehiculos
     Created on : 18-Feb-2015, 19:24:41
-    @author Jairo
+    @author Jairo Medina
 --%>
 <%@page import="DTO.EstadosVehiculoDto"%>
 <%@page import="DAO.EstadosVehiculoDao"%>
@@ -20,7 +20,7 @@
 <head>
     <meta charset="utf-8">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Registro Vehiculo</title>
+    <title>Registro Veh韈ulo</title>
     <!-- InstanceEndEditable -->
     <!-- InstanceBeginEditable name="head" -->
     <link type="text/css" rel="stylesheet" href="../css/estilos.css">
@@ -57,16 +57,19 @@
 
 <nav>
    <a href="../asignacion.jsp" title="Menu principal"><span class="fa fa-home fa-1x"></span>Inicio</a>
-        <a href="formFuncionario.jsp" title="Registro de Funcionarios"><span class="fa fa-users fa-1x"> Registro de Funcionarios</a>
-        <a href="formVehiculos.jsp" title="Registro de veh铆culos"><span class="fa fa-car fa-1x"> Registro de veh韈ulos</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
-        <a href="../index-es.html" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
+        <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
+        <a href="formConsultaVehiculos.jsp" title="Consulta de veh铆culos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
+        <a href="formConsultaAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Consulta de asignaci髇</a>
+        <a href="../index-es.jsp" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
 </nav>
 <!-- InstanceEndEditable -->
 
 <div id="espacio2"></div>
 <!-- InstanceBeginEditable name="Body" -->
 <body>
+    <%
+        HttpSession miSession = request.getSession();
+    %>
 <section>
     <div id="area">
         <div id="miga">
@@ -84,7 +87,7 @@
             <div class="cajas" id="cajaUno">      
 
                 <label for="placa">Placa:</label>
-                <input name="placa" id="placa" type="text" placeholder="Ej. MPW734" tabindex="1" required minlength="6" maxlength="6" alphanum> 
+                <input name="placa" id="placa" type="text" placeholder="Ej. MPW734" tabindex="1" required minlength="5" maxlength="6" alphanum value="<%=miSession.getAttribute("Placa") %>"> 
 
                 <label for="sigla">Sigla:</label>
                 <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="2" minlength="5" maxlength="12">
@@ -219,7 +222,7 @@
             rules: {
                 placa: {
                     required: true,
-                    minlength: 6,
+                    minlength: 5,
                     maxlength: 6
                 },
                 sigla: {
@@ -397,7 +400,7 @@
 <div id="espacio3"></div>
 
 <foot>
-    <div class="pie">Versi贸n 1.0 | COPYRIGHT   &copy;2014 SIMVA | Cont谩ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+    <div class="pie">Versi髇 1.0 | COPYRIGHT   &copy;2014 SIMVA | Cont谩ctenos: 300-212-81-88 | E-mail: contactenos@simva.url.ph</div> 
 </foot>
 
 <div id="espacio4"></div>

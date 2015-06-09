@@ -6,6 +6,7 @@
 package CONTROLES;
 
 import DAO.AsignacionesDao;
+import DAO.VehiculosDao;
 import DTO.AsignacionesDto;
 import DTO.VehiculosDto;
 import java.io.IOException;
@@ -40,9 +41,12 @@ public class GestionAsignaciones extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
 
             String Asig = "";
+            String Vehi = "";
             HttpSession miSession = request.getSession();
             AsignacionesDto ObjDtoAsig = new AsignacionesDto();
             AsignacionesDao ObjDaoAsig = new AsignacionesDao();
+            VehiculosDto ObjDtoVehi = new VehiculosDto();
+            VehiculosDao ObjDaoVehi = new VehiculosDao();
 
             if (request.getParameter("enviar").equals("Guardar")) {
 
@@ -54,16 +58,41 @@ public class GestionAsignaciones extends HttpServlet {
                 ObjDtoAsig.setNovedadesVehiculos("novedadesVehiculo");
 
                 Asig = ObjDaoAsig.IngresarAsignacion(ObjDtoAsig);
-                
+
             } else if (request.getParameter("enviar").equals("Consultar")) {
-                ObjDtoAsig = ObjDaoAsig.ConsultarAsignacion(request.getParameter("placa"));
-                if(ObjDtoAsig != null){
-                    miSession.setAttribute("ObjAsig", ObjDtoAsig);
-                    miSession.setAttribute("placa", request.getParameter("placa"));
-                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaAsignacion.jsp?Asig=" + Asig);
+                try {
+                    ObjDtoAsig = ObjDaoAsig.ConsultarAsignacion(request.getParameter("placa"));
+                    if (ObjDtoAsig.getPlaca() != null) {
+                        miSession.setAttribute("ObjAsig", ObjDtoAsig);
+                        miSession.setAttribute("Placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaAsignacion.jsp?Asig=" + Asig);
+                    } else {
+                        boolean mensaje = false;
+                        Asig = "Para Asignar el vehiculo de clic en el boton";
+                        miSession.setAttribute("ObjAsig", ObjDtoAsig);
+                        miSession.setAttribute("Placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacionNoExiste.jsp?Asig=" + Asig);
+                    }
+                } catch (Exception miExcepcion) {
+
+                }
+            } else if (request.getParameter("enviar").equals("Asignar")) {
+                try {
+                    //miSession.getAttribute("Placa");
+                    ObjDtoVehi = ObjDaoVehi.ConsultarVehiculo(request.getParameter("placa"));
+                    if (ObjDtoVehi.getPlaca() != null) {
+                        miSession.setAttribute("ObjAsig", ObjDtoVehi);
+                        miSession.setAttribute("Placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacion.jsp?Asig="+Asig);
+                    } else {
+                        boolean mensaje = false;
+                        Vehi = "Para registrar un nuevo vehiculo en la base de datos de clic en el boton";
+                        miSession.setAttribute("Placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculoNoExiste.jsp?Vehi=" + Vehi);
+                    }
+                } catch (Exception miException) {
                 }
             }
-            //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formAsignacion.jsp?Asig=" + Asig);
         }
     }
 

@@ -36,6 +36,7 @@ public class GestionVehiculos extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String Vehi = "";
+            String rta = "";
             HttpSession miSession = request.getSession();
             VehiculosDto ObjDtoVehi = new VehiculosDto();
             VehiculosDao ObjDaoVehi = new VehiculosDao();
@@ -66,18 +67,28 @@ public class GestionVehiculos extends HttpServlet {
                 Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
             } else if (request.getParameter("enviar").equals("Consultar")) {
-                ObjDtoVehi = ObjDaoVehi.ConsultarVehiculo(request.getParameter("placa"));
-                if (ObjDtoVehi != null) {
-                    miSession.setAttribute("ObjVehi", ObjDtoVehi);
-                    miSession.setAttribute("placa", request.getParameter("placa"));
-                    response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaVehiculo.jsp?Vehi=" + Vehi);
+                try {
+                    ObjDtoVehi = ObjDaoVehi.ConsultarVehiculo(request.getParameter("placa"));
+                    if (ObjDtoVehi.getPlaca() != null) {
+                        miSession.setAttribute("ObjVehi", ObjDtoVehi);
+                        miSession.setAttribute("placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formResultadoConsultaVehiculo.jsp?Vehi=" + Vehi);
+
+                    } else {
+                        boolean mensaje = false;
+                        Vehi = "Para registrar un nuevo vehiculo en la base de datos de clic en el boton";
+                        miSession.setAttribute("Placa", request.getParameter("placa"));
+                        response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculoNoExiste.jsp?Vehi=" + Vehi);
+
+                    }
+                } catch (Exception miException) {
 
                 }
-
-                //   Vehi = ObjDaoVehi.IngresarVehiculo(ObjDtoVehi);
-                //response.sendRedirect("/ProyectoSimva/spanish/asignacion/listadoFuncionarios.jsp?funci="+funci);
+            }
+            if (request.getParameter("enviar").equals("Registrar")) {
+                response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
             } else if ((request.getParameter("enviar").equals("Actualizar"))) {
-                 ObjDtoVehi.setPlaca(request.getParameter("placa"));
+                ObjDtoVehi.setPlaca(request.getParameter("placa"));
                 ObjDtoVehi.setIdTiposVehiculo(Integer.parseInt(request.getParameter("tipoVehiculo")));
                 ObjDtoVehi.setIdMarcas(Integer.parseInt(request.getParameter("marcaVehiculo")));
                 ObjDtoVehi.setIdTiposCombustibles(Integer.parseInt(request.getParameter("tiposCombustibles")));
@@ -98,10 +109,9 @@ public class GestionVehiculos extends HttpServlet {
                 ObjDtoVehi.setRevisionTecnomecanica(Integer.parseInt(request.getParameter("revisionTecnomecanica")));
                 ObjDtoVehi.setVencimientoTecnomecanica(request.getParameter("vencimientoTecnomecanica"));
                 ObjDtoVehi.setFotoVehiculo(request.getParameter("fotoVehiculo"));
-                 Vehi = ObjDaoVehi.ActualizarVehiculo(ObjDtoVehi);
+                Vehi = ObjDaoVehi.ActualizarVehiculo(ObjDtoVehi);
                 response.sendRedirect("/ProyectoSimva/spanish/asignacion/formConsultaVehiculo.jsp?Vehi=" + Vehi);
-                
-                
+
             }
             /*else if (request.getParameter("enviar").equals("Eliminar"))
              {
@@ -110,7 +120,6 @@ public class GestionVehiculos extends HttpServlet {
              }*/
 
             //response.sendRedirect("/ProyectoSimva/spanish/asignacion/formVehiculos.jsp?Vehi=" + Vehi);
-
         }
     }
 

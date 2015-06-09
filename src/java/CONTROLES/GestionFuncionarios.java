@@ -75,7 +75,7 @@ public class GestionFuncionarios extends HttpServlet {
                     } else {
                         boolean mensaje = false;
                         miSession.setAttribute("Cedula", request.getParameter("numeroDocumento"));
-                        funci = "Para registrar un nuevo funcionario en la base de datos de clic en el botón";
+                        funci = "Para registrar un nuevo funcionario en la base de datos de clic en el boton";
                         response.sendRedirect("/ProyectoSimva/spanish/asignacion/formFuncionarioNoExiste.jsp?funci=" + funci);
                     }
                 } catch (Exception miExcepcion) {

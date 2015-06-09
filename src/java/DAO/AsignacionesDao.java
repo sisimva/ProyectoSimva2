@@ -52,7 +52,7 @@ public class AsignacionesDao {
 
     }
 
-    public AsignacionesDto ConsultarAsignacion(String placa) {
+    public AsignacionesDto ConsultarAsignacion(String placa) throws SQLException, miExcepcion {
         String rta = "";
         AsignacionesDto unaAsignacion = new AsignacionesDto();
         try {
@@ -71,7 +71,7 @@ public class AsignacionesDao {
                     + "WHERE a.placa=?;");
             stmt.setString(1, placa);
             rs = stmt.executeQuery();
-            while (rs.next()) {
+           if (rs.next()) {
                 unaAsignacion.setIdAsignaciones(rs.getInt("a.idAsignaciones"));
                 unaAsignacion.setFotoVehiculo(rs.getString("v.fotoVehiculo"));
                 unaAsignacion.setPlaca(rs.getString("a.placa"));
@@ -98,19 +98,24 @@ public class AsignacionesDao {
                 unaAsignacion.setFechaAsignacion(rs.getString("a.fechaAsignacion"));
                 unaAsignacion.setFechaDesasignacion(rs.getString("a.fechaDesasignacion"));
                 unaAsignacion.setNovedadesVehiculos(rs.getString("a.novedadesVehiculo"));
+            }else{
+            rta = "Vehículo no asignado";
+            System.out.println("Vehículo no asignado");
             }
         } catch (SQLException sqle) {
             rta = sqle.getMessage();
-        }/*finally{
-         if(con!=null){
-         try{
-         con.close();
-         }catch(SQLException e){
-         e.printStackTrace();
-         }
-         }
-         }*/
+        } /*finally {
+            try {
+                stmt.close();
+               // rs.close();
+                /* if(con!=null){
+                 con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }*/
 
         return unaAsignacion;
+
     }
 }

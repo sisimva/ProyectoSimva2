@@ -1,3 +1,5 @@
+<%@page import="DTO.VehiculosDto"%>
+<%@page import="DTO.AsignacionesDto"%>
 <%@page import="DTO.GradosDto"%>
 <%@page import="DAO.GradosDao"%>
 <%@page import="DTO.EmpleoVehiculoDto"%>
@@ -47,7 +49,7 @@
         <a href="formConsultaFuncionario.jsp" title="Consulta de Funcionarios"><span class="fa fa-users fa-1x"> Consulta de Funcionarios</a>
         <a href="formConsultaVehiculos.jsp" title="Consulta de veh铆culos"><span class="fa fa-car fa-1x"> Consulta de veh韈ulos</a>
         <a href="formConsultaAsignacion.jsp" title="Consulta asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Consulta asignaci髇</a>
-        <a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>
+        <!--<a href="formAsignacion.jsp" title="Realizar asignaci贸n"><span class="fa fa-check-square-o fa-1x"> Realizar asignaci髇</a>-->
         <a href="../index-es.jsp" title="Cerrar secci贸n"><span class="fa fa-sign-out fa-1x"></span>Desconectar</a>
     </nav>
     <!-- InstanceEndEditable -->
@@ -55,13 +57,19 @@
     <div id="espacio2"></div>
     <!-- InstanceBeginEditable name="Body" -->
     <body>
+        <%
+            HttpSession miSession = request.getSession();
+           VehiculosDto ObjDtoVehi = new VehiculosDto();
+          ObjDtoVehi = (VehiculosDto) miSession.getAttribute("ObjAsig");
+            
+        %>
     <section>
         <div id="area">
             <div id="miga">
                 <br>
                 <ol class="breadcrumb">
                     <li><a href="../Asignacion.jsp">Inicio</a></li>
-                    <li class="active">Formulario de Asignacion</li>   
+                    <li class="active">Formulario de Asignaci髇</li>   
                 </ol>
             </div>
             <form class="formularioAsignacionVehiculo" method="post" action="GestionAsignaciones">
@@ -75,24 +83,24 @@
                     </div>
                     <br>
                     <label for="placa">Placa:</label>
-                    <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8"> 
+                    <input name="placa" id="placa" type="text" placeholder="Ej. MPW-734" tabindex="2" required minlength="5" maxlength="8" disabled value="<%=ObjDtoVehi.getPlaca()%>"> 
 
                     <label for="sigla">Sigla:</label>
-                    <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="3" minlength="5" maxlength="12" disabled>
+                    <input name="sigla" id="sigla" type="text" placeholder="Ej. EJC-L13-97-097" tabindex="3" minlength="5" maxlength="12" disabled value="<%=ObjDtoVehi.getSigla()%>">
 
                     <label for="tipoVehiculo">Tipo:</label>
-                    <input name="tipoVehiculo" id="tipoVehiculo" type="text" placeholder="Ej. Camiones 2.5 ton T芒ctico" tabindex="4" disabled>
-
+                    <input name="tipoVehiculo" id="tipoVehiculo" type="text" placeholder="Ej. Camiones 2.5 ton T芒ctico" tabindex="4" disabled value="<%=ObjDtoVehi.getDescripcionTipoVehiculo()%>">
+                                                                                                                                                                                                                          
 
                     <label for="marcaVehiculo">Marca:</label>
-                    <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled>
+                    <input name="marcaVehiculo" id="marcaVehiculo" type="text" placeholder="Toyota" tabindex="5" disabled value="<%=ObjDtoVehi.getDescripcionMarcaVehiculo()%>">
 
                     <label for="cilindraje">Cilindraje:</label>
-                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled>
+                    <input name="cilindraje" id="cilindraje" type="text" placeholder= "Ej. 2300" tabindex="6" disabled value="<%=ObjDtoVehi.getCilindraje() %>">
 
                     <label for="empleoVehiculo">Empleo:</label>
-                    <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled="">
-                </div>
+                    <Input  name="empleoVehiculo" id="empleoVehiculo" tabindex="19" placeholder="Asignado" disabled value="<%=ObjDtoVehi.getDescripcionEmpleoVehiculo() %>">
+                </div> 
                 <div class="cajas" id="cajados">
                     <div name="fotoFuncionario" id="fotoFuncionario"> 
                         <!--<img src="../img/funcionario.jpg" alt="foto" width="120" height="100"-->

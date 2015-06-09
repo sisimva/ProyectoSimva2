@@ -71,13 +71,13 @@
 
             <form class="formularioConsultaVehiculos" method="post" action="../../GestionVehiculos">
                 <h3>Formulario Consulta de Vehículo</h3>
-
-                <div class="cajas" id="cajaUno">  
+                <br> <br> <br>
+                <center>
                     <label for="placa">Digite la placa del vehículo:</label>
                     <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y números"><br><br>
                     <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
                     <br>
-                </div>
+                </center>
             </form>
             <%
                 if (request.getParameter("Vehi") != null) {
@@ -111,7 +111,7 @@
     <div id="espacio3"></div>
 
     <foot>
-        <div class="pie">VersiÃ³n 5.0 | COPYRIGHT   &copy;2014 SIMVA | ContÃ¡ctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+        <div class="pie">Versión 5.0 | COPYRIGHT   &copy;2014 SIMVA | Contáctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
     </foot>
 
     <div id="espacio4"></div>

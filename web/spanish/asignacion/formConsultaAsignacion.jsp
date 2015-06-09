@@ -72,20 +72,18 @@
                     <li class="active">Formulario Consulta de Asignación</li>   
                 </ol>
             </div>
-
             <form class="formularioConsultaAsignacion" method="post" action="../../GestionAsignaciones">
                 <h3>Formulario Consulta Asignación de Vehículo</h3>
-
-                <div class="cajas" id="cajaUno">  
-                    <label for="placa">Digite la placa del vehículo:</label>
-                    <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="6" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y números"><br><br>
-                    <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
-                    <br>
-                </div>
+                <br> <br> <br>
+                <Center>
+                <label for="placa">Digite la placa del vehículo:</label>
+                <input name="placa" id="placa" class="inputad"  type="text" placeholder= "Ej. MPW734" tabindex="1" minlength="5" required maxlength="6" value=""  pattern="[a-zA-Z0-9]" title="Digite solamente letras y números"><br><br>
+                <input class="btn btn-primary" type="submit" id="buscarPlaca" name="enviar" value="Consultar">
+               </center>
             </form>
             <%
-                if (request.getParameter("Vehi") != null) {
-                    out.print("<h2>" + request.getParameter("Vehi") + "</h2>");
+                if (request.getParameter("Asig") != null) {
+                    out.print("<h2>" + request.getParameter("Asig") + "</h2>");
                 }
             %>
     </section>
@@ -95,7 +93,7 @@
                 rules: {
                     placa: {
                         required: true,
-                        minlength: 6,
+                        minlength: 5,
                         maxlength: 6
                     }
                 },
@@ -115,7 +113,7 @@
     <div id="espacio3"></div>
 
     <foot>
-        <div class="pie">Versión 5.0 | COPYRIGHT   &copy;2014 SIMVA | Contáctenos: 3108549716 | E-mail: contactenos@simva.url.ph</div> 
+        <div class="pie">Versión 5.0 | COPYRIGHT   &copy;2014 SIMVA | Contáctenos: 300-212-81-88 | E-mail: contactenos@simva.url.ph</div> 
     </foot>
 
     <div id="espacio4"></div>
