@@ -43,12 +43,12 @@ public class HistorialMantenimiento extends HttpServlet {
             request.getSession().removeAttribute("mantenimientos");
 
             String paramFechaInicial = request.getParameter("fechaInicio");
-            String paramFechaFinal = request.getParameter("fechaFin");
+            String paramFechaFinal = request.getParameter("FechaFinal");
 
             //Si es una eliminación las fechas están en session
             if (paramFechaInicial == null || paramFechaFinal == null) {
                 paramFechaInicial = (String)request.getSession().getAttribute("fechaInicio");
-                paramFechaFinal = (String)request.getSession().getAttribute("fechaFin");
+                paramFechaFinal = (String)request.getSession().getAttribute("FechaFinal");
                 
                 String mantenimientoId = request.getParameter("mantenimientoId");
                 
@@ -62,7 +62,7 @@ public class HistorialMantenimiento extends HttpServlet {
             if (mantenimientos != null || !mantenimientos.isEmpty()) {
                 request.getSession().setAttribute("mantenimientos", mantenimientos);
                 request.getSession().setAttribute("fechaInicio", paramFechaInicial);
-                request.getSession().setAttribute("fechaFin", paramFechaFinal);
+                request.getSession().setAttribute("FechaFinal", paramFechaFinal);
             } else {
                 request.getSession().setAttribute("mensaje", "No se encontraron mantenimientos");
             }
